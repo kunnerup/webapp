@@ -1,0 +1,142 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+/* ----------VARIABLER ---------- */
+:root {
+  --white_text: white;
+  --darkgreen: #1b594b;
+  --lightgreen: #5ed5ba;
+  --white: white;
+  --black: black;
+}
+
+/*GENERELLE STYLES*/
+h2 {
+  color: var(--darkgreen);
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 35px;
+  margin-top: -20px;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+/*--------MENU--------*/
+.menu {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  width: 100%;
+  justify-content: space-around;
+  background-color: var(--white);
+  border: 1.5px solid black;
+  border-top-left-radius: 13px;  border-top-right-radius: 13px;
+}
+
+.hide{
+  visibility: hidden;
+  opacity: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--black);
+  padding: 10px;
+}
+
+.menu a img {
+  height: 50px;
+}
+
+/*-------TOPBAREN-------*/
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header img {
+  height: 50px;
+  padding: 10px;
+}
+
+/*-------KØB MAD--------*/
+.buy-container {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--white);
+height: 63vh;
+width: 100%;
+border-top-left-radius: 30px;  border-top-right-radius: 30px;
+box-shadow: 0 0 10px black;
+padding-top: 40px;
+padding-bottom: 20px;
+}
+
+.stars {
+  height: 20px;
+  width: 20px;
+}
+
+#mad-container {
+  display: grid;
+  grid-auto-rows: 25%;
+  grid-template-columns: 95%;
+  justify-content: center;
+  scroll-behavior: smooth;
+  overflow: scroll;
+  margin-bottom: 57px;
+}
+
+#mad-container article {
+  padding: 10px;
+  width: 90vw;
+  display: flex;
+}
+
+#mad-container article img {
+height: auto;
+width: 40%;
+object-fit: scale-down;
+border-radius: 15px;
+}
+
+#buy{
+  background: linear-gradient(var(--lightgreen), var(--darkgreen));
+  width: 100%;
+height: 30vh;
+}
+
+#buy input {
+  display: block;
+  margin: auto;
+  width: 65vw;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+  color: var(--darkgreen);
+}
+
+.pot {
+  position: fixed;
+  right: -20px;
+  bottom: 60px;
+  height: 150px;
+  transform: rotate(-10deg);
+  opacity: 0.1;
+}
+
+
+
+
+@media (min-width: 600px) {
+
+}
+
+@media (min-width: 992px) {
+
+}

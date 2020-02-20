@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SU PORTIONEN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Køb dine måltider på SU PORTIONEN for en hjemmelavet, smagfuld og ikke mindst billig oplevelse.">
+  <meta name="author" content="Anders Kunnerup & Jonas Kløjgaard">
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+</head>
+
+<body onhashchange="pageChange()">
+  <!-- MENU -->
+  <nav id="menu" class="menu hide">
+    <a href="#buy"><img src="images/buy.png" alt="køb mad logo"></a>
+    <a href="#lokation"><img src="images/pointer.png" alt="mad i nærheden logo"></a>
+      <a href="#sell"><img src="images/kok.png" alt="Sælg mad logo"></a>
+  </nav>
+
+  <!-- pages -->
+  <!-- home page -->
+  <section id="buy" class="sektion">
+    <header>
+<img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+    </header>
+
+<h2>Find din mad</h2>
+
+    <input type="search" placeholder="Søg efter mad" onkeyup="search(this.value)">
+    <section id="mad-container" class="buy-container">
+
+<img class="pot" src="images/pot.png" alt="grydelogo">
+
+      <article><img src="images/padthai.jpg"><p><span class="bold">Pad Thai</span><br> &#x022C6; &#x022C6; <br>150g<br><span class="bold">35kr</span></p></article>
+      <article><img src="images/padthai.jpg"><p>Pad Thai<br></p></article>
+      <article><img src="images/padthai.jpg"><p>Pad Thai<br></p></article>
+      <article><img src="images/padthai.jpg"><p>Pad Thai<br></p></article>
+      <article><img src="images/padthai.jpg"><p>Pad Thai<br></p></article>
+        <article><img src="images/padthai.jpg"><p>Pad Thai<br></p></article>
+    </section>
+  </section>
+
+  <!-- about page -->
+  <section id="lokation" class="sektion">
+    <header>
+    </header>
+    <select id="select-category" name="category" onchange="categorySelected(this.value)">
+      <option value="">Select category</option>
+    </select>
+    <section id="movies-by-category-container" class="grid-container">
+      <p>Please, select category</p>
+    </section>
+  </section>
+
+  <section id="sell" class="sektion">
+    <header>
+
+    </header>
+    <input type="search" placeholder="Search" onkeyup="search(this.value)">
+    <section id="movies-container" class="grid-container"></section>
+  </section>
+
+  <section id="profil" class="sektion">
+    <header>
+    </header>
+    <input type="search" placeholder="Search" onkeyup="search(this.value)">
+    <section id="movies-container" class="grid-container"></section>
+    <a href="#" onclick="logout()">LOG UD</a>
+  </section>
+
+  <section id="login" class="sektion">
+    <header>
+    </header>
+    <!-- firebase auth container  -->
+    <section id="firebaseui-auth-container"></section>
+  </section>
+
+
+  <!-- loader  -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+<!--FIREBASE SCRIPTS-->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-firestore.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+  <!-- JAVASCRIPT FILEN -->
+  <script src="js/main.js"></script>
+    <script src="js/spa.js"></script>
+</body>
+
+</html>
