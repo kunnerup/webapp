@@ -9,8 +9,7 @@ export default class MadService {
   }
 
   read() {
-    // ========== READ ==========
-    // watch the database ref for changes
+    // SE DATABASEN OM DER ER ÆNDRINGER
     this.userRef.onSnapshot(snapshotData => {
       let users = [];
       snapshotData.forEach(doc => {
@@ -22,7 +21,7 @@ export default class MadService {
     });
   }
 
-  // append users to the DOM
+  // SENDER MADRETTER TIL DOMMEN
   appendUsers(users) {
     let htmlTemplate = "";
     for (let user of users) {
