@@ -1,54 +1,43 @@
-"use strict";
-
-// hide all pages
-function hideAllPages() {
-  let pages = document.querySelectorAll(".sektion");
-  for (let page of pages) {
-    page.style.display = "none";
+export default class SpaService {
+  constructor(defaultPage) {
+    this.defaultPage = defaultPage;
+    this.pages = document.querySelectorAll(".sektion");
+      this.navItems = document.querySelectorAll("#menu a");
   }
-}
 
-// show page or tab
-function showPage(pageId) {
-  hideAllPages();
+  //SKJUL ALLE SIDER
+  hideAllPages() {
+    for (let page of this.pages) {
+      page.style.display = "none";
+    }
+  }
+
+//LAVE FUNKTIONEN SHOWPAGE DER VISER SIDERNE
+showPage(pageId) {
+  this.hideAllPages();
   document.querySelector(`#${pageId}`).style.display = "block";
-  setActiveTab(pageId);
+  this.setActiveTab(pageId);
 }
-
-// sets active tabbar/ menu item
-function setActiveTab(pageId) {
-  let pages = document.querySelectorAll(".menu a");
-  for (let page of pages) {
-    if (`#${pageId}` === page.getAttribute("href")) {
-      page.classList.add("active");
+//
+setActiveTab(pageId) {
+  for (let navItem of this.navItems) {
+    if (`#${pageId}` === navItem.getAttribute("href")) {
+      navItem.classList.add("active");
     } else {
-      page.classList.remove("active");
+      navItem.classList.remove("active");
     }
   }
 }
-
-// navigate to a new view/page by changing href
-function navigateTo(pageId) {
-  location.href = `#${pageId}`;
+navigateTo(pageId) {
+  window.location.href = `#${pageId}`;
 }
 
-// set default page or given page by the hash url
-// function is called 'onhashchange'
-function pageChange() {
-  let page = "buy";
-  if (location.hash) {
-    page = location.hash.slice(1);
+pageChange() {
+  let page = this.defaultPage;
+  if (window.location.hash) {
+    page = window.location.hash.slice(1);
   }
-  showPage(page);
+  this.showPage(page);
 }
 
-pageChange(); // called by default when the app is loaded for the first time
-
-function showLoader(show) {
-  let loader = document.querySelector('#loader');
-  if (show) {
-    loader.classList.remove("hide");
-  } else {
-    loader.classList.add("hide");
-  }
 }

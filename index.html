@@ -9,7 +9,7 @@
   <meta name="author" content="Anders Kunnerup & Jonas Kløjgaard">
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="images/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 </head>
 
@@ -32,7 +32,7 @@
 
     <section id="log">
       <h2>LOG IND</h2>
-    <!-- FIREBASE LOGIN FORMS  -->
+    <!-- FIREBASE LOGIN  -->
     <section id="firebaseui-auth-container"></section>
   </section>
   <h4>Hjælp dig selv og andre<br><span class="darkgreen">med maden</span></h4>
@@ -72,6 +72,8 @@
     </section>
   </section>
 
+
+<!--SÆLG EN RET / CREATE-->
   <section id="sell" class="sektion">
     <header>
 <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
@@ -79,15 +81,17 @@
     <h2>Sælg en portion</h2>
     <section id="sell-container" class="addportion">
       <h3>Indsæt billede</h3>
-      <input type="file" id="img" accept="image/*" onchange="picture(), 'pictureUpdate()'">
+      <form>
+<input type="file" id="img" accept="image/*" onchange="previewImage(this.file, 'imagePreview')">
+<img id="imagePreview" class="image-preview">
       <div class="info">
 <input type="text" id="madoverskrift" placeholder="Navn på portionen" required>
 <textarea row="10" cols="10" id="madbeskrivelse" placeholder="Beskriv portionen" required></textarea>
 <input type="number" id="gram" placeholder="Angiv cirka vægt" required>
-<input type="number" id="pris" placeholder="Angiv pris" required>
+<input type="number" id="pris" placeholder="Angiv pris" required></form>
           </section>    </div>
 
-      <button type="button" class="gem" onclick="opretPortion()">Gem</button>
+      <button type="button" class="gem" onclick="createFood()">Gem</button>
 
   </section>
 
@@ -119,7 +123,6 @@
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
   <!-- JAVASCRIPT FILEN -->
-  <script src="js/spa.js"></script>
   <script src="js/main.js" type="module"></script>
 
 </body>

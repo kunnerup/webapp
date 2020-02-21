@@ -1,19 +1,41 @@
 "use strict";
+import SpaService from "./spa.js";
+import MadService from "./mad-service.js";
 
-//LOGIN
-const firebaseConfig = {
-  apiKey: "AIzaSyCvyPcQHvikqeM0rl188nz0FZfC5qTaf3k",
-     authDomain: "anders-web-app.firebaseapp.com",
-     databaseURL: "https://anders-web-app.firebaseio.com",
-     projectId: "anders-web-app",
-     storageBucket: "anders-web-app.appspot.com",
-     messagingSenderId: "997223589905",
-     appId: "1:997223589905:web:0b501a72f99b1a66e569b0",
-     measurementId: "G-4FG2ENTLQZ"
-   };
+let _spaService = new SpaService("login");
+let _madService = new MadService();
+let _selectedUserId = "";
+let _selectedImgFile ="";
 
-   // INITIALIZE FIREBASE
-   firebase.initializeApp(firebaseConfig);
+window.pageChange = function() {
+  _spaService.pageChange();
+}
+
+//CREATE MAD
+window.createFood = () => {
+  // references to the input fields
+  let imageInput = document.querySelector('#imagePreview');
+  let nameInput = document.querySelector('#madoverskrift');
+  let beskrivelseInput = document.querySelector('#madbeskrivelse');
+  let gramInput = document.querySelector('#gram');
+  let prisInput = document.querySelector('#pris');
+
+  _madService.create(imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
+  _spaService.navigateTo("buy");
+}
+
+//BILLEDET AF RETTEN
+window.previewImage = (file, previewId) => {
+  if (file) {
+    _selectedImgFile = file;
+    let reader = new FileReader();
+    reader.onload = event => {
+      document.querySelector('#' + previewId).setAttribute('src', event.target.result);
+    };
+    reader.readAsDataURL(file);
+  }}
+
+
 
    // SER OM BRUGERNE LOGGES RIGTIGT IND
    firebase.auth().onAuthStateChanged(function(user) {
@@ -82,4 +104,15 @@ function appendUserData(user) {
     <p>${user.email}</p>
     <p>${user.img}</p>
   `;
+}
+
+
+function showLoader(show) {
+  let loader = document.querySelector('#loader');
+  if (show) {
+    loader.classList.remove("hide");
+  } else {
+    loader.classList.add("hide");
+  }
+
 }

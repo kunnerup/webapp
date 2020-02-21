@@ -37,6 +37,26 @@ p, h1, h2, h3, h4, h5, h6 {
   font-family: 'PT Sans';
 }
 
+.image-preview {
+  width: 80%;
+  height: auto;
+}
+
+.sektion {
+  display: none;
+  animation: skiftSide 1s;
+}
+
+/*ANIMATIONER*/
+@keyframes skiftSide {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
 /*--------MENU--------*/
 .menu {
   display: flex;
