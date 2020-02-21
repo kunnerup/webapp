@@ -17,12 +17,12 @@ export default class MadService {
         ret.id = doc.id;
         retter.push(ret);
       });
-      this.appendUsers(retter);
+      this.appendFood(retter);
     });
   }
 
   // SENDER MADRETTER TIL DOMMEN
-  appendUsers(retter) {
+  appendFood(retter) {
     let htmlTemplate = "";
     for (let ret of retter) {
       htmlTemplate += `
@@ -32,7 +32,7 @@ export default class MadService {
         ${ret.beskrivelse}<br>
         ${ret.gram} g <br>
         ${ret.pris} kr </p>
-<div class="redslet"><p class="rediger">REDIGER</p><p class="slet">SLET</p></div>
+<div class="redslet"><p class="rediger">REDIGER</p><p class="slet" onclick="delete(id)">SLET</p></div>
       </article>
       `;
     }
@@ -49,4 +49,9 @@ export default class MadService {
       pris
     });
   }
+
+//SLET RET
+delete(id) {
+  this.userRef.doc(id).delete();
+}
 }

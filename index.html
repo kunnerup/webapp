@@ -73,14 +73,14 @@
     <section id="sell-container" class="addportion">
       <h3>Indsæt billede</h3>
       <form>
-<input type="file" id="img" accept="image/*" onchange="previewImage(this.file, 'imagePreview')">
+<input type="file" id="img" accept="image/*" onchange="previewImage(this.files[0], 'imagePreview')">
 <img id="imagePreview" class="image-preview">
       <div class="info">
 <input type="text" id="madoverskrift" placeholder="Navn på portionen" required>
-<textarea row="10" cols="10" id="madbeskrivelse" placeholder="Beskriv portionen" required></textarea>
+<textarea cols="10" id="madbeskrivelse" placeholder="Beskriv portionen" required></textarea>
 <input type="number" id="gram" placeholder="Angiv vægt" required>
-<input type="number" id="pris" placeholder="Angiv pris" required></form>
-          </section>    </div>
+<input type="number" id="pris" placeholder="Angiv pris" required></div></form>
+          </section>
 
       <button type="button" class="gem" onclick="createFood()">Gem</button>
 

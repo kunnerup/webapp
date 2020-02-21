@@ -22,6 +22,7 @@ window.createFood = () => {
 
   _madService.create(imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
   _spaService.navigateTo("buy");
+  imageInput = "";
 }
 
 //BILLEDET AF RETTEN
@@ -35,6 +36,10 @@ window.previewImage = (file, previewId) => {
     reader.readAsDataURL(file);
   }}
 
+//DELETE BRUGER
+  window.deleteUser = (id) => {
+    _madService.delete(id);
+  }
 
 
    // SER OM BRUGERNE LOGGES RIGTIGT IND
@@ -50,13 +55,13 @@ window.previewImage = (file, previewId) => {
 //FUNKTIONEN HVIS BRUGEREN FINDES
 function userAuthenticated(user) {
   appendUserData(user);
-  hideMenu(false);
-  showLoader(false);
+hideMenu(false);
+showLoader(false);
 }
  //HVIS BRUGEREN IKKE FINDES
 function userNotAuthenticated() {
-  hideMenu(true);
-  showPage("login");
+hideMenu(true);
+  _spaService.showPage("#login");
 
 
   // Firebase UI indstillinger - her tilføjes mail, google og telefonløsningen
