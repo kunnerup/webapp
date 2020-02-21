@@ -10,6 +10,7 @@
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
   <link rel="stylesheet" href="css/main.css">
   <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body onhashchange="pageChange()">
@@ -22,6 +23,22 @@
 
   <!-- pages -->
   <!-- home page -->
+
+  <section id="login" class="sektion">
+
+      <img id="biglogo" src="images/logo.png" alt="logo SU Portionen">
+      <h2>SU <span class="lightgreen">PORTIONEN</span> </h2>
+
+
+    <section id="log">
+      <h2>LOG IND</h2>
+    <!-- FIREBASE LOGIN FORMS  -->
+    <section id="firebaseui-auth-container"></section>
+  </section>
+  <h4>Hjælp dig selv og andre<br><span class="darkgreen">med maden</span></h4>
+  </section>
+
+
   <section id="buy" class="sektion">
     <header>
 <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
@@ -60,19 +77,17 @@
 <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
     </header>
     <h2>Sælg en portion</h2>
-    <section id="movies-container" class="grid-container"></section>
-
-    <div class="addportion">
+    <section id="sell-container" class="addportion">
       <h3>Indsæt billede</h3>
-      <div class="addpic">
-    </div>
-    </div>
+      <input type="file" id="img" accept="image/*" onchange="picture(), 'pictureUpdate()'">
+      <div class="info">
+<input type="text" id="madoverskrift" placeholder="Navn på portionen" required>
+<textarea row="10" cols="10" id="madbeskrivelse" placeholder="Beskriv portionen" required></textarea>
+<input type="number" id="gram" placeholder="Angiv cirka vægt" required>
+<input type="number" id="pris" placeholder="Angiv pris" required>
+          </section>    </div>
 
-    <div class="info">
-    </div>
-
-
-      <h4 class="gem">Gem</h4>
+      <button type="button" class="gem" onclick="opretPortion()">Gem</button>
 
   </section>
 
@@ -89,20 +104,8 @@
 </div>
 
   </section>
-  
-  <section id="login" class="sektion">
-
-      <img id="biglogo" src="images/logo.png" alt="logo SU Portionen">
-      <h2>SU <span class="lightgreen">PORTIONEN</span> </h2>
 
 
-    <section id="log">
-      <h2>LOG IND</h2>
-    <!-- FIREBASE LOGIN FORMS  -->
-    <section id="firebaseui-auth-container"></section>
-  </section>
-<h4>Hjælp dig selv og andre<br><span class="darkgreen">med maden</span></h4>
-</section>
 
 
   <!-- loader  -->
@@ -116,8 +119,9 @@
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
   <!-- JAVASCRIPT FILEN -->
-  <script src="js/main.js"></script>
-    <script src="js/spa.js"></script>
+  <script src="js/spa.js"></script>
+  <script src="js/main.js" type="module"></script>
+
 </body>
 
 </html>

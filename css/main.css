@@ -33,6 +33,10 @@ h2 {
   color: var(--darkgreen);
 }
 
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: 'PT Sans';
+}
+
 /*--------MENU--------*/
 .menu {
   display: flex;
@@ -107,7 +111,7 @@ header img {
   bottom: 2%;
   right: 2%;
   position: absolute;
-  font-size: 35px;
+  font-size: 30px;
   text-align: right;
   color: var(--lightgreen);
   font-style: italic;
@@ -193,6 +197,26 @@ padding-bottom: 20px;
 scroll-behavior: smooth;
 overflow: scroll;
 }
+
+#sell-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#sell-container input, #sell-container textarea {
+  padding: 6px;
+  border-radius: 10px;
+  border: 0.5px solid var(--lightgreen);
+    font-family: 'PT Sans';
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--darkgreen);
+}
+
+::placeholder {
+  color: var(--darkgreen);
+}
+
 .addpic{
   padding: 10px;
   border-radius: 10px;
@@ -205,21 +229,43 @@ overflow: scroll;
 color: #3B9B86;
 text-align: center;
 margin-bottom: 10px;
-
 }
 
 
 .info{
   position: absolute;
-  top: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-between;
+  top: 25%;
   left: 10%;
   border-radius: 10px;
   margin: auto;
   width: 80%;
-  height: 30%;
+  height: 45%;
   background-color: white;
   padding-bottom: 5%;
+  padding-top: 15px;
+
 }
+
+#madoverskrift {
+height: 20px;
+width: 80%;
+}
+
+#madbeskrivelse {
+  height: 80px;
+  width: 80%;
+}
+
+#gram, #pris {
+  width: 35%;
+  height: 20px;
+}
+
 .gem{
   position: absolute;
   top: 85%;

@@ -1,3 +1,5 @@
+"use strict";
+
 //LOGIN
 const firebaseConfig = {
   apiKey: "AIzaSyCvyPcQHvikqeM0rl188nz0FZfC5qTaf3k",
