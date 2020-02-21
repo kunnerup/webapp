@@ -179,7 +179,80 @@ height: 30vh;
   opacity: 0.1;
 }
 
+/*--------Sælg en portion------------*/
+.addportion {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(var(--lightgreen), var(--darkgreen));
+height: 63vh;
+width: 100%;
+border-top-left-radius: 30px;  border-top-right-radius: 30px;
+box-shadow: 0 0 10px black;
+padding-top: 40px;
+padding-bottom: 20px;
+scroll-behavior: smooth;
+overflow: scroll;
+}
+.addpic{
+  padding: 10px;
+  border-radius: 10px;
+  margin:10px auto;
+  width: 10%;
+  height: 10%;
+  background-color: white;
+}
+.addportion {
+color: #3B9B86;
+text-align: center;
+margin-bottom: 10px;
 
+}
+
+
+.info{
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  border-radius: 10px;
+  margin: auto;
+  width: 80%;
+  height: 30%;
+  background-color: white;
+  padding-bottom: 5%;
+}
+.gem{
+  position: absolute;
+  top: 85%;
+  left: 80%;
+  border-style: solid; color: white;
+   border-width: thin;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 100px;
+  background-color: #20A285;
+}
+/*----------profil----------*/
+.proinfo{
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(var(--lightgreen), var(--darkgreen));
+height: 63vh;
+width: 100%;
+border-top-left-radius: 30px;  border-top-right-radius: 30px;
+box-shadow: 0 0 10px black;
+padding-top: 40px;
+padding-bottom: 20px;
+scroll-behavior: smooth;
+overflow: scroll;
+}
+.proinfo2{
+  border-radius: 10px;
+  margin: auto;
+  width: 90%;
+  height: 70%;
+  background-color: white;
+  padding-bottom: 5%;
+}
 
 
 @media (min-width: 600px) {
