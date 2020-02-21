@@ -11,28 +11,28 @@ export default class MadService {
   read() {
     // SE DATABASEN OM DER ER ÆNDRINGER
     this.userRef.onSnapshot(snapshotData => {
-      let users = [];
+      let retter = [];
       snapshotData.forEach(doc => {
-        let user = doc.data();
-        user.id = doc.id;
-        users.push(user);
+        let ret = doc.data();
+        ret.id = doc.id;
+        retter.push(ret);
       });
-      this.appendUsers(users);
+      this.appendUsers(retter);
     });
   }
 
   // SENDER MADRETTER TIL DOMMEN
-  appendUsers(users) {
+  appendUsers(retter) {
     let htmlTemplate = "";
-    for (let user of users) {
+    for (let ret of retter) {
       htmlTemplate += `
       <article>
-        <img src="${user.img}">
-        <p><span class="bold">${user.name}</span><br>
-        ${user.beskrivelse}<br>
-        ${user.gram} g <br>
-        ${user.pris} kr </p>
-
+        <img src="${ret.img}">
+        <p><span class="bold">${ret.name}</span><br>
+        ${ret.beskrivelse}<br>
+        ${ret.gram} g <br>
+        ${ret.pris} kr </p>
+<div class="redslet"><p class="rediger">REDIGER</p><p class="slet">SLET</p></div>
       </article>
       `;
     }

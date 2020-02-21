@@ -67,6 +67,7 @@ function userNotAuthenticated() {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
    firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
+    //Vis BUY som "startside"
     signInSuccessUrl: '#buy'
   };
 
@@ -102,7 +103,6 @@ function appendUserData(user) {
   document.querySelector('#profil').innerHTML += `
     <h3>${user.displayName}</h3>
     <p>${user.email}</p>
-    <p>${user.img}</p>
   `;
 }
 
