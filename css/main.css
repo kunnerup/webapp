@@ -25,6 +25,14 @@ h2 {
   font-weight: bolder;
 }
 
+.lightgreen {
+  color: var(--lightgreen);
+}
+
+.darkgreen {
+  color: var(--darkgreen);
+}
+
 /*--------MENU--------*/
 .menu {
   display: flex;
@@ -64,17 +72,58 @@ header img {
   padding: 10px;
 }
 
+/*--------LOGIN SIDEN--------*/
+#firebaseui-auth-container {
+  width: 100%;
+
+}
+
+#log {
+  background: linear-gradient(var(--lightgreen), var(--darkgreen));
+  width: 95%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+  margin: auto;
+  border-radius: 20px;
+  color: var(--white_text);
+  margin-top: 10%;
+  padding-top: 50px;
+}
+
+#biglogo {
+  height: 10vh;
+  display: block;
+  position: relative;
+  margin: auto;
+  padding: 25px;
+}
+
+
+
+#login h4 {
+  bottom: 2%;
+  right: 2%;
+  position: absolute;
+  font-size: 35px;
+  text-align: right;
+  color: var(--lightgreen);
+  font-style: italic;
+}
+
 /*-------KØB MAD--------*/
 .buy-container {
   position: absolute;
   bottom: 0;
   background-color: var(--white);
-height: 63vh;
+height: 60vh;
 width: 100%;
 border-top-left-radius: 30px;  border-top-right-radius: 30px;
 box-shadow: 0 0 10px black;
 padding-top: 40px;
-padding-bottom: 20px;
+padding-bottom: 3  0px;
 }
 
 .stars {
