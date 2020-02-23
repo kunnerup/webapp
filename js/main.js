@@ -36,10 +36,16 @@ window.previewImage = (file, previewId) => {
     reader.readAsDataURL(file);
   }}
 
-//DELETE BRUGER
-  window.deleteUser = (id) => {
-    _madService.delete(id);
+//DELETE MAD
+  window.delete = (id) => {
+    console.log(ret.id);
+    _madService.delete(ret.id);
   }
+
+//SØGEFUNKTION
+  window.search = function(searchValue) {
+  _madService.search(searchValue);
+}
 
 
    // SER OM BRUGERNE LOGGES RIGTIGT IND

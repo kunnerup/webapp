@@ -32,7 +32,10 @@ export default class MadService {
         ${ret.beskrivelse}<br>
         ${ret.gram} g <br>
         ${ret.pris} kr </p>
-<div class="redslet"><p class="rediger">REDIGER</p><p class="slet" onclick="delete(id)">SLET</p></div>
+<div class="redslet">
+<p class="rediger">REDIGER</p>
+<p class="slet" onclick="delete('${ret.id}')">SLET</p>
+</div>
       </article>
       `;
     }
@@ -53,5 +56,19 @@ export default class MadService {
 //SLET RET
 delete(id) {
   this.userRef.doc(id).delete();
+}
+
+
+search(value) {
+  let searchQuery = value.toLowerCase();
+  let filteredFood = [];
+  for (let ret of this.retter) {
+    let name = ret.name.toLowerCase();
+    if (title.includes(searchQuery)) {
+      filteredMovies.push(movie);
+    }
+  }
+  console.log(filteredFood);
+  this.appendFood(filteredFood);
 }
 }
