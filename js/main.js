@@ -4,7 +4,7 @@ import MadService from "./mad-service.js";
 
 let _spaService = new SpaService("login");
 let _madService = new MadService();
-let _selectedUserId = "";
+let _selectedFoodId = "";
 let _selectedImgFile ="";
 
 window.pageChange = function() {
@@ -22,7 +22,6 @@ window.createFood = () => {
 
   _madService.create(imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
   _spaService.navigateTo("buy");
-  imageInput = "";
 }
 
 //BILLEDET AF RETTEN
@@ -38,13 +37,40 @@ window.previewImage = (file, previewId) => {
 
 //DELETE MAD
   window.delete = (id) => {
-    console.log(ret.id);
     _madService.delete(ret.id);
   }
 
 //SØGEFUNKTION
-  window.search = function(searchValue) {
-  _madService.search(searchValue);
+
+
+//UPDATE MADRETTER
+//FØRST VALG AF MADRET
+window.selectFood = (id, name, beskrivelse, img, gram, pris) => {
+  // Vælger de "Nye" input felter til opdatereingen
+  let imageInput = document.querySelector('#imagePreview-update');
+  let nameInput = document.querySelector('#madoverskrift-update');
+  let beskrivelseInput = document.querySelector('#madbeskrivelse-update');
+  let gramInput = document.querySelector('#gram-update');
+  let prisInput = document.querySelector('#pris-update');
+
+  nameInput.value = name;
+  beskrivelseInput.value = beskrivelse;
+  imageInput.src = img;
+  gramInput.value = gram;
+  prisInput.value = pris;
+  _selectedFoodId = id;
+  _spaService.navigateTo("editfood");
+}
+
+window.update = (id, name, beskrivelse, img, gram, pris) => {
+  let imageInput = document.querySelector('#imagePreview-update');
+  let nameInput = document.querySelector('#madoverskrift-update');
+  let beskrivelseInput = document.querySelector('#madbeskrivelse-update');
+  let gramInput = document.querySelector('#gram-update');
+  let prisInput = document.querySelector('#pris-update');
+
+  _madService.update(_selectedFoodId, imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
+  _spaService.navigateTo("buy");
 }
 
 
@@ -67,7 +93,7 @@ showLoader(false);
  //HVIS BRUGEREN IKKE FINDES
 function userNotAuthenticated() {
 hideMenu(true);
-  _spaService.showPage("#login");
+  _spaService.showPage("login");
 
 
   // Firebase UI indstillinger - her tilføjes mail, google og telefonløsningen
@@ -106,9 +132,8 @@ function hideMenu(hide) {
 
 //LOG UD
 function logout() {
-  firebase.auth().signOut();
-document.navigateTo('#login');
-}
+      firebase.auth().signOut();
+    }
 
 function appendUserData(user) {
   document.querySelector('#profil').innerHTML += `

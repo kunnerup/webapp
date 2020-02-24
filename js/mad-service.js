@@ -4,13 +4,13 @@ import {
 
 export default class MadService {
   constructor() {
-    this.userRef = firebaseDB.collection("users");
+    this.foodRef = firebaseDB.collection("users");
     this.read();
   }
 
   read() {
     // SE DATABASEN OM DER ER ÆNDRINGER
-    this.userRef.onSnapshot(snapshotData => {
+    this.foodRef.onSnapshot(snapshotData => {
       let retter = [];
       snapshotData.forEach(doc => {
         let ret = doc.data();
@@ -33,7 +33,7 @@ export default class MadService {
         ${ret.gram} g <br>
         ${ret.pris} kr </p>
 <div class="redslet">
-<p class="rediger">REDIGER</p>
+<p class="rediger" onclick="selectFood('${ret.id}','${ret.name}', '${ret.beskrivelse}', '${ret.img}', '${ret.gram}', '${ret.pris}')">REDIGER</p>
 <p class="slet" onclick="delete('${ret.id}')">SLET</p>
 </div>
       </article>
@@ -44,7 +44,7 @@ export default class MadService {
 
   // TILFØJ NY PORTION - Rækkefølgen!
   create(img, name, beskrivelse, gram, pris) {
-    this.userRef.add({
+    this.foodRef.add({
       img,
       name,
       beskrivelse,
@@ -55,20 +55,24 @@ export default class MadService {
 
 //SLET RET
 delete(id) {
-  this.userRef.doc(id).delete();
+this.foodRef.doc(id).delete();
 }
 
 
-search(value) {
-  let searchQuery = value.toLowerCase();
-  let filteredFood = [];
-  for (let ret of this.retter) {
-    let name = ret.name.toLowerCase();
-    if (title.includes(searchQuery)) {
-      filteredMovies.push(movie);
-    }
-  }
-  console.log(filteredFood);
-  this.appendFood(filteredFood);
+//OPDATER MADRETTER
+update(id, img, name, beskrivelse, gram, pris){
+let foodToUpdate = {
+  img: img,
+  name: name,
+  beskrivelse: beskrivelse,
+  gram: gram,
+  pris: pris
+};
+this.foodRef.doc(id).set(foodToUpdate);
+}
+
+
+logout() {
+authService.logout();
 }
 }
