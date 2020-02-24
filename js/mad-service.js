@@ -27,14 +27,14 @@ export default class MadService {
     for (let ret of retter) {
       htmlTemplate += `
       <article>
-        <img src="${ret.img}">
+        <img onclick="selectidmoreinfo" src="${ret.img}">
         <p><span class="bold">${ret.name}</span><br>
         ${ret.beskrivelse}<br>
         ${ret.gram} g <br>
         ${ret.pris} kr </p>
 <div class="redslet">
 <p class="rediger" onclick="selectFood('${ret.id}','${ret.name}', '${ret.beskrivelse}', '${ret.img}', '${ret.gram}', '${ret.pris}')">REDIGER</p>
-<p class="slet" onclick="delete('${ret.id}')">SLET</p>
+<p class="slet" onclick="deleteRet('${ret.id}')">SLET</p>
 </div>
       </article>
       `;
@@ -60,7 +60,7 @@ this.foodRef.doc(id).delete();
 
 
 //OPDATER MADRETTER
-update(id, img, name, beskrivelse, gram, pris){
+selectidmoreinfo(id, img, name, beskrivelse, gram, pris){
 let foodToUpdate = {
   img: img,
   name: name,
@@ -70,6 +70,20 @@ let foodToUpdate = {
 };
 this.foodRef.doc(id).set(foodToUpdate);
 }
+
+
+//OPDATER MADRETTER
+update(id, img, name, beskrivelse, gram, pris){
+let showMoreInfo = {
+  img: img,
+  name: name,
+  beskrivelse: beskrivelse,
+  gram: gram,
+  pris: pris
+};
+this.foodRef.doc(id).set(showMoreInfo);
+}
+
 
 
 logout() {

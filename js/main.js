@@ -5,7 +5,7 @@ import MadService from "./mad-service.js";
 let _spaService = new SpaService("login");
 let _madService = new MadService();
 let _selectedFoodId = "";
-let _selectedImgFile ="";
+let _selectedImgFile = "";
 
 window.pageChange = function() {
   _spaService.pageChange();
@@ -36,15 +36,21 @@ window.previewImage = (file, previewId) => {
   }}
 
 //DELETE MAD
-  window.delete = (id) => {
-    _madService.delete(ret.id);
+  window.deleteRet = (id) => {
+    console.log(id);
+    _madService.delete(id);
   }
+
+  //LOG UD
+  window.logout = () => {
+        firebase.auth().signOut();
+      }
 
 //SØGEFUNKTION
 
 
 //UPDATE MADRETTER
-//FØRST VALG AF MADRET
+//FØRST VALG AF MADRET og tilføjt til inputfelter
 window.selectFood = (id, name, beskrivelse, img, gram, pris) => {
   // Vælger de "Nye" input felter til opdatereingen
   let imageInput = document.querySelector('#imagePreview-update');
@@ -72,6 +78,10 @@ window.update = (id, name, beskrivelse, img, gram, pris) => {
   _madService.update(_selectedFoodId, imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
   _spaService.navigateTo("buy");
 }
+
+
+//VIS MERE INFO OM DEN SPECIFIKKE RET
+
 
 
    // SER OM BRUGERNE LOGGES RIGTIGT IND
@@ -130,10 +140,7 @@ function hideMenu(hide) {
   }
 }
 
-//LOG UD
-function logout() {
-      firebase.auth().signOut();
-    }
+
 
 function appendUserData(user) {
   document.querySelector('#profil').innerHTML += `

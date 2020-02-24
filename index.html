@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="shortcut icon" type="image/png" href="images/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 
 <body onhashchange="pageChange()">
@@ -108,6 +110,7 @@
 
   <div class="infoupdate">
     <input type="file" id="img-update" accept="image/*" onchange="previewImage(this.files[0], 'imagePreview-update')">
+    <h5><i class="material-icons">add_a_photo</i></h5>
     <img id="imagePreview-update" class="image-preview">
     <input type="text" id="madoverskrift-update" placeholder="Navn på portionen" required>
     <textarea cols="10" id="madbeskrivelse-update" placeholder="Beskriv portionen" required></textarea>
@@ -117,6 +120,17 @@
     <button class="gemupdate" type="button" name="button" onclick="update()">Opdatér portion</button>
   </form>
   </section>
+
+
+
+  <section id="inforomret" class="sektion">
+    <header>
+      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+    </header>
+  <h2>Opdatér din madret</h2>
+
+
+    </section>
 
 
 

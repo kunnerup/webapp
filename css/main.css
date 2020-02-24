@@ -281,7 +281,7 @@ margin-bottom: 10px;
 }
 
 .infoupdate{
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -291,13 +291,35 @@ margin-bottom: 10px;
   width: 100%;
   background-color: white;
   padding-top: 15px;
+  scroll-behavior: smooth;
+  overflow: scroll;
+  z-index: 2;
+}
+
+.infoupdate i {
+  position: absolute;
+left: 43.5%;
+  display: block;
+  font-size: 40px;
+  z-index: 1;
 }
 
 #imagePreview-update {
-  max-height: 30vh;
+  max-height: 25vh;
   width: auto;
 padding: 20px;
 }
+
+#img-update {
+  width: 25%;
+  height: 35px;
+}
+#img-update  {
+  overflow: hidden;
+  opacity: 0;
+}
+
+
 
 .gemupdate{
   position: relative;
