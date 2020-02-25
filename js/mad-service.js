@@ -44,7 +44,7 @@ export default class MadService {
   }
 
 
-  // MERE DETALJERET INFO
+  // MERE DETALJERET INFO OM RETTERNE
   appendFoodInfo(id, name, beskrivelse, img, gram, pris) {
     console.log(id, name, beskrivelse, img, gram, pris);
     let skabelon = `
@@ -60,7 +60,7 @@ export default class MadService {
 ${beskrivelse}</p>
 <br>
 <p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
-<p id="madContainerPris" span="bold">${pris}kr.</span></p> 
+<p id="madContainerPris" span="bold">${pris}kr.</span></p>
 <div class="muligheder">
 <div><i class="material-icons" onclick="addToFavourites(madId)">
 add_box
@@ -77,7 +77,7 @@ add_box
   }
 
 //Tilføjer den valgte portion til kurven
-appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
+/*appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
   console.log(id, nameKurv, imageKurv, prisKurv);
   let kurvTemplate = "";
   kurvTemplate += `
@@ -90,7 +90,7 @@ appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
   `;
 
   document.querySelector('#pay').innerHTML = kurvTemplate;
-}
+}*/
 
   // TILFØJ NY PORTION - Rækkefølgen!
   create(img, name, beskrivelse, gram, pris) {

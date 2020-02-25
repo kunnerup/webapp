@@ -2,28 +2,30 @@
 import SpaService from "./spa.js";
 import MadService from "./mad-service.js";
 
+//GLOBALE VARIABLER
 let _spaService = new SpaService("login");
 let _madService = new MadService();
 let _selectedFoodId = "";
 let _selectedImgFile = "";
 let _currentUser;
 
+//FÅR SIDEN TIL AT SKIFTE NÅR DER KLIKKES
 window.pageChange = function() {
   _spaService.pageChange();
 }
 
 //CREATE MAD
 window.createFood = () => {
-  // references to the input fields
+  // Finder inputfelterne
   let imageInput = document.querySelector('#imagePreview');
   let nameInput = document.querySelector('#madoverskrift');
   let beskrivelseInput = document.querySelector('#madbeskrivelse');
   let gramInput = document.querySelector('#gram');
   let prisInput = document.querySelector('#pris');
 
-
   _madService.create(imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
   _spaService.navigateTo("buy");
+  //lader inputfeltene blive tomme igen korrekt oprettet madret
   document.querySelector('#madoverskrift').value = "";
   document.querySelector('#madbeskrivelse').value = "";
   document.querySelector('#gram').value = "";
@@ -71,6 +73,7 @@ window.selectFood = (id, name, beskrivelse, img, gram, pris) => {
   let gramInput = document.querySelector('#gram-update');
   let prisInput = document.querySelector('#pris-update');
 
+//Indstiller værdien i inputfelterne
   nameInput.value = name;
   beskrivelseInput.value = beskrivelse;
   imageInput.src = img;
@@ -102,7 +105,7 @@ _madService.appendTilKurv(_selectedFoodId, nameKurv, prisKurv.textContent);
 }*/
 
 
-// append favourite movies to the DOM
+// Tilføje mad til kurven
 async function appendAddFood(madIds = []) {
   let kurvTemplate = "";
   if (madIds.length === 0) {
@@ -124,7 +127,7 @@ async function appendAddFood(madIds = []) {
   document.querySelector('#pay').innerHTML = kurvTemplate;
 }
 
-// adds a given movieId to the favMovies array inside _currentUser
+// Skal tilføje en bestemt id (valget) til arrayet madIds som appender på "payment"
 window.addToFavourites=(madId) => {
   showLoader(true);
     _spaService.navigateTo("payment");
@@ -137,7 +140,7 @@ window.addToFavourites=(madId) => {
   });
 }
 
-// removes a given movieId to the favMovies array inside _currentUser
+// Fjerner et specifikt ID fra payment siden
 function removeFromFavourites(madId) {
   showLoader(true);
   _madService.foodRef.doc(_currentUser.uid).update({
@@ -202,7 +205,7 @@ function hideMenu(hide) {
 }
 
 
-
+//Tilføj brugerne data på profilsiden
 function appendUserData(user) {
   document.querySelector('#profil').innerHTML += `
   <br><h2>${user.displayName}</h2>
@@ -210,7 +213,7 @@ function appendUserData(user) {
   `;
 }
 
-
+//loader
 function showLoader(show) {
   let loader = document.querySelector('#loader');
   if (show) {
@@ -224,15 +227,15 @@ function showLoader(show) {
 
 
 //MAPBOX
-mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYTU1MDgiLCJhIjoiY2syMDZ5bXBtMDBuZTNlcXpvbnozYzJuZSJ9.Wo5gS17JDQ8hYPQ82hQlgA';
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYTU1MDgiLCJhIjoiY2syMDZ5bXBtMDBuZTNlcXpvbnozYzJuZSJ9.Wo5gS17JDQ8hYPQ82hQlgA'; //Vores acceptoken
 let map = new mapboxgl.Map({
-container: 'map', // MAP ID (HTML)
-style: 'mapbox://styles/mapbox/streets-v11',
+container: 'map', // MAP-ID (HTML)
+style: 'mapbox://styles/mapbox/streets-v11', //stylesheetet
 center: [10.203921, 56.162939], // START POSITION
 zoom: 13 // START ZOOM
 });
 
-// Add geolocate control to the map.
+//Find ud af hvor brugeren er og brug dette til lokation ved tryk
 map.addControl(
 new mapboxgl.GeolocateControl({
 positionOptions: {
