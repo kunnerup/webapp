@@ -27,9 +27,9 @@ export default class MadService {
     for (let ret of retter) {
       htmlTemplate += `
       <article>
-        <img onclick="selectidmoreinfo" src="${ret.img}">
+        <img onclick="showInfo('${ret.id}','${ret.name}', '${ret.beskrivelse}', '${ret.img}', '${ret.gram}', '${ret.pris}')" src="${ret.img}">
         <p><span class="bold">${ret.name}</span><br>
-        ${ret.beskrivelse}<br>
+        <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i><br>
         ${ret.gram} g <br>
         ${ret.pris} kr </p>
 <div class="redslet">
@@ -41,6 +41,30 @@ export default class MadService {
     }
     document.querySelector('#mad-container').innerHTML = htmlTemplate;
   }
+
+
+  // MERE DETALJERET INFO
+  appendFoodInfo(id, name, beskrivelse, img, gram, pris) {
+    console.log(id, name, beskrivelse, img, gram, pris);
+    let skabelon = `
+    <article class="foodinfo">
+    <a href="#buy"><div class="returnbuy"><i class="material-icons">close</i></div></a>
+
+<h2 span="bold">${name}</h2>
+<br>
+  <img src="${img}">
+<br>
+<p><span class="darkgreen">Beskrivelse</span>
+<br>
+${beskrivelse}</p>
+
+<div class="skubop"></div>
+</article>
+    `;
+
+    document.querySelector('#infomadboks').innerHTML = skabelon;
+  }
+
 
   // TILFØJ NY PORTION - Rækkefølgen!
   create(img, name, beskrivelse, gram, pris) {
@@ -60,7 +84,7 @@ this.foodRef.doc(id).delete();
 
 
 //OPDATER MADRETTER
-selectidmoreinfo(id, img, name, beskrivelse, gram, pris){
+update(id, img, name, beskrivelse, gram, pris){
 let foodToUpdate = {
   img: img,
   name: name,
@@ -70,20 +94,6 @@ let foodToUpdate = {
 };
 this.foodRef.doc(id).set(foodToUpdate);
 }
-
-
-//OPDATER MADRETTER
-update(id, img, name, beskrivelse, gram, pris){
-let showMoreInfo = {
-  img: img,
-  name: name,
-  beskrivelse: beskrivelse,
-  gram: gram,
-  pris: pris
-};
-this.foodRef.doc(id).set(showMoreInfo);
-}
-
 
 
 logout() {

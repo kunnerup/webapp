@@ -3,6 +3,7 @@ export default class SpaService {
     this.defaultPage = defaultPage;
     this.pages = document.querySelectorAll(".sektion");
       this.navItems = document.querySelectorAll("#menu a");
+      this.pageChange();
   }
 
   //SKJUL ALLE SIDER

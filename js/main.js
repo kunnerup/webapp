@@ -46,6 +46,12 @@ window.previewImage = (file, previewId) => {
         firebase.auth().signOut();
       }
 
+      //MERE INFO OM maden
+      window.showInfo = (id, name, beskrivelse, img, gram, pris) => {
+        _spaService.navigateTo("info-om-ret");
+      _madService.appendFoodInfo(id, name, beskrivelse, img, gram, pris);
+      }
+
 //SØGEFUNKTION
 
 
@@ -78,10 +84,6 @@ window.update = (id, name, beskrivelse, img, gram, pris) => {
   _madService.update(_selectedFoodId, imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
   _spaService.navigateTo("buy");
 }
-
-
-//VIS MERE INFO OM DEN SPECIFIKKE RET
-
 
 
    // SER OM BRUGERNE LOGGES RIGTIGT IND
