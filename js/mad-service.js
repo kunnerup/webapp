@@ -76,21 +76,21 @@ add_box
     document.querySelector('#infomadboks').innerHTML = skabelon;
   }
 
-//Tilføjer den valgte portion til kurven
-/*appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
-  console.log(id, nameKurv, imageKurv, prisKurv);
-  let kurvTemplate = "";
-  kurvTemplate += `
-  <article class="kurven">
-  <a href="#buy"><div class="returnbuy"><i class="material-icons">close</i></div></a>
+  //Tilføjer den valgte portion til kurven
+  /*appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
+    console.log(id, nameKurv, imageKurv, prisKurv);
+    let kurvTemplate = "";
+    kurvTemplate += `
+    <article class="kurven">
+    <a href="#buy"><div class="returnbuy"><i class="material-icons">close</i></div></a>
 
-<h2 span="bold">${nameKurv}</h2>
+  <h2 span="bold">${nameKurv}</h2>
 
-</article>
-  `;
+  </article>
+    `;
 
-  document.querySelector('#pay').innerHTML = kurvTemplate;
-}*/
+    document.querySelector('#pay').innerHTML = kurvTemplate;
+  }*/
 
   // TILFØJ NY PORTION - Rækkefølgen!
   create(img, name, beskrivelse, gram, pris) {
@@ -103,37 +103,37 @@ add_box
     });
   }
 
-//SLET RET
-delete(id) {
-this.foodRef.doc(id).delete();
-}
+  //SLET RET
+  delete(id) {
+    this.foodRef.doc(id).delete();
+  }
 
 
-//OPDATER MADRETTER
-update(id, img, name, beskrivelse, gram, pris){
-let foodToUpdate = {
-  img: img,
-  name: name,
-  beskrivelse: beskrivelse,
-  gram: gram,
-  pris: pris
-};
-this.foodRef.doc(id).set(foodToUpdate);
-}
-//tilføj til kurv
-/*
-addKurv(id, img, nameKurv, beskrivelse, gram, pris){
-let addToKurv = {
-  img: img,
-  name: nameKurv,
-  beskrivelse: beskrivelse,
-  gram: gram,
-  pris: pris
-};
-this.foodRef.doc(id).add(addToKurv);
-}
-*/
-logout() {
-authService.logout();
-}
+  //OPDATER MADRETTER
+  update(id, img, name, beskrivelse, gram, pris) {
+    let foodToUpdate = {
+      img: img,
+      name: name,
+      beskrivelse: beskrivelse,
+      gram: gram,
+      pris: pris
+    };
+    this.foodRef.doc(id).set(foodToUpdate);
+  }
+  //tilføj til kurv
+  /*
+  addKurv(id, img, nameKurv, beskrivelse, gram, pris){
+  let addToKurv = {
+    img: img,
+    name: nameKurv,
+    beskrivelse: beskrivelse,
+    gram: gram,
+    pris: pris
+  };
+  this.foodRef.doc(id).add(addToKurv);
+  }
+  */
+  logout() {
+    authService.logout();
+  }
 }

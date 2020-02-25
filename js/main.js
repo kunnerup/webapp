@@ -41,24 +41,25 @@ window.previewImage = (file, previewId) => {
       document.querySelector('#' + previewId).setAttribute('src', event.target.result);
     };
     reader.readAsDataURL(file);
-  }}
+  }
+}
 
 //DELETE MAD
-  window.deleteRet = (id) => {
-    console.log(id);
-    _madService.delete(id);
-  }
+window.deleteRet = (id) => {
+  console.log(id);
+  _madService.delete(id);
+}
 
-  //LOG UD
-  window.logout = () => {
-        firebase.auth().signOut();
-      }
+//LOG UD
+window.logout = () => {
+  firebase.auth().signOut();
+}
 
-      //MERE INFO OM maden
-      window.showInfo = (id, name, beskrivelse, img, gram, pris) => {
-        _spaService.navigateTo("info-om-ret");
-      _madService.appendFoodInfo(id, name, beskrivelse, img, gram, pris);
-      }
+//MERE INFO OM maden
+window.showInfo = (id, name, beskrivelse, img, gram, pris) => {
+  _spaService.navigateTo("info-om-ret");
+  _madService.appendFoodInfo(id, name, beskrivelse, img, gram, pris);
+}
 
 //SØGEFUNKTION
 
@@ -73,7 +74,7 @@ window.selectFood = (id, name, beskrivelse, img, gram, pris) => {
   let gramInput = document.querySelector('#gram-update');
   let prisInput = document.querySelector('#pris-update');
 
-//Indstiller værdien i inputfelterne
+  //Indstiller værdien i inputfelterne
   nameInput.value = name;
   beskrivelseInput.value = beskrivelse;
   imageInput.src = img;
@@ -128,9 +129,9 @@ async function appendAddFood(madIds = []) {
 }
 
 // Skal tilføje en bestemt id (valget) til arrayet madIds som appender på "payment"
-window.addToFavourites=(madId) => {
+window.addToFavourites = (madId) => {
   showLoader(true);
-    _spaService.navigateTo("payment");
+  _spaService.navigateTo("payment");
   _madService.foodRef.doc(_currentUser.uid).set({
     addedFood: firebase.firestore.FieldValue.arrayUnion(madId)
 
@@ -148,8 +149,8 @@ function removeFromFavourites(madId) {
   });
 }
 
-   // SER OM BRUGERNE LOGGES RIGTIGT IND
-   firebase.auth().onAuthStateChanged(function(user) {
+// SER OM BRUGERNE LOGGES RIGTIGT IND
+firebase.auth().onAuthStateChanged(function(user) {
   if (user) { // Hvis brugeren er logget rigtigt ind, så:
     userAuthenticated(user);
   } else { // hvis brugeren ikke er logget korrekt ind, så:
@@ -161,12 +162,12 @@ function removeFromFavourites(madId) {
 //FUNKTIONEN HVIS BRUGEREN FINDES
 function userAuthenticated(user) {
   appendUserData(user);
-hideMenu(false);
-showLoader(false);
+  hideMenu(false);
+  showLoader(false);
 }
- //HVIS BRUGEREN IKKE FINDES
+//HVIS BRUGEREN IKKE FINDES
 function userNotAuthenticated() {
-hideMenu(true);
+  hideMenu(true);
   _spaService.showPage("login");
 
 
@@ -176,22 +177,22 @@ hideMenu(true);
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-   firebase.auth.PhoneAuthProvider.PROVIDER_ID
+      firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
     //Vis BUY som "startside"
     signInSuccessUrl: '#buy'
   };
 
   // Firebase UI
-const ui = new firebaseui.auth.AuthUI(firebase.auth());
-ui.start('#firebaseui-auth-container', uiConfig);
-showLoader(false);
+  const ui = new firebaseui.auth.AuthUI(firebase.auth());
+  ui.start('#firebaseui-auth-container', uiConfig);
+  showLoader(false);
 }
 
 function checkLoginState() {
-FB.getLoginStatus(function(response) {
-  statusChangeCallback(response);
-});
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
 }
 
 //VIS/SKJUL MENUEN
@@ -229,18 +230,18 @@ function showLoader(show) {
 //MAPBOX
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYTU1MDgiLCJhIjoiY2syMDZ5bXBtMDBuZTNlcXpvbnozYzJuZSJ9.Wo5gS17JDQ8hYPQ82hQlgA'; //Vores acceptoken
 let map = new mapboxgl.Map({
-container: 'map', // MAP-ID (HTML)
-style: 'mapbox://styles/mapbox/streets-v11', //stylesheetet
-center: [10.203921, 56.162939], // START POSITION
-zoom: 13 // START ZOOM
+  container: 'map', // MAP-ID (HTML)
+  style: 'mapbox://styles/mapbox/streets-v11', //stylesheetet
+  center: [10.203921, 56.162939], // START POSITION
+  zoom: 13 // START ZOOM
 });
 
 //Find ud af hvor brugeren er og brug dette til lokation ved tryk
 map.addControl(
-new mapboxgl.GeolocateControl({
-positionOptions: {
-enableHighAccuracy: true
-},
-trackUserLocation: true
-})
+  new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  })
 );

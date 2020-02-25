@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Køb dine måltider på SU PORTIONEN for en hjemmelavet, smagfuld og ikke mindst billig oplevelse.">
   <meta name="author" content="Anders Kunnerup & Jonas Kløjgaard">
-  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
   <link rel="stylesheet" href="css/main.css">
   <link rel="shortcut icon" type="image/png" href="images/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css" rel="stylesheet" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css" rel="stylesheet" />
 </head>
 
 <body onhashchange="pageChange()">
@@ -21,38 +21,38 @@
   <nav id="menu" class="menu hide">
     <a href="#buy"><img src="images/buy.png" alt="køb mad logo"></a>
     <a href="#lokation"><img src="images/pointer.png" alt="mad i nærheden logo"></a>
-      <a href="#sell"><img src="images/kok.png" alt="Sælg mad logo"></a>
+    <a href="#sell"><img src="images/kok.png" alt="Sælg mad logo"></a>
   </nav>
 
   <!-- SIDERNE i WEBAPPEN -->
 
-<!--LOGIN-->
+  <!--LOGIN-->
   <section id="login" class="sektion">
 
-      <img id="biglogo" src="images/logo.png" alt="logo SU Portionen">
-      <h2>SU <span class="lightgreen">PORTIONEN</span> </h2>
+    <img id="biglogo" src="images/logo.png" alt="logo SU Portionen">
+    <h2>SU <span class="lightgreen">PORTIONEN</span> </h2>
 
 
     <section id="log">
       <h2>LOG IND</h2>
-    <!-- FIREBASE LOGIN  -->
-    <section id="firebaseui-auth-container"></section>
-  </section>
-  <h4>Hjælp dig selv og andre<br><span class="darkgreen">med maden</span></h4>
+      <!-- FIREBASE LOGIN  -->
+      <section id="firebaseui-auth-container"></section>
+    </section>
+    <h4>Hjælp dig selv og andre<br><span class="darkgreen">med maden</span></h4>
   </section>
 
-<!--LISTE MED MADRETTER READ DELETE = KØB-->
+  <!--LISTE MED MADRETTER READ DELETE = KØB-->
   <section id="buy" class="sektion">
     <header>
-<img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
     </header>
 
-<h2>Find din mad</h2>
+    <h2>Find din mad</h2>
 
     <input type="search" placeholder="Søg efter mad" onkeyup="search(value)">
     <section id="mad-container" class="buy-container">
 
-<img class="pot" src="images/pot.png" alt="grydelogo">
+      <img class="pot" src="images/pot.png" alt="grydelogo">
 
 
     </section>
@@ -61,74 +61,76 @@
   <!-- MAD I NÆRHEDEN -->
   <section id="lokation" class="sektion">
     <header>
-  <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
     </header>
     <h2>Mad i nærheden</h2>
     <p>Retterne på kortet er klar til bestilling.</p>
-<div id="map"></div>
+    <div id="map"></div>
   </section>
 
 
-<!--SÆLG EN RET / CREATE-->
+  <!--SÆLG EN RET / CREATE-->
   <section id="sell" class="sektion">
     <header>
-<img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
     </header>
     <h2>Sælg en portion</h2>
     <section id="sell-container" class="addportion">
       <h3>Indsæt billede</h3>
       <form>
-<input type="file" id="img" accept="image/*" onchange="previewImage(this.files[0], 'imagePreview')">
-<img id="imagePreview" class="image-preview">
-      <div class="info">
-<input type="text" id="madoverskrift" placeholder="Navn på portionen" required>
-<textarea cols="10" id="madbeskrivelse" placeholder="Beskriv portionen" required></textarea>
-<input type="number" id="gram" placeholder="Angiv vægt" required>
-<input type="number" id="pris" placeholder="Angiv pris" required></div></form>
-          </section>
+        <input type="file" id="img" accept="image/*" onchange="previewImage(this.files[0], 'imagePreview')">
+        <img id="imagePreview" class="image-preview">
+        <div class="info">
+          <input type="text" id="madoverskrift" placeholder="Navn på portionen" required>
+          <textarea cols="10" id="madbeskrivelse" placeholder="Beskriv portionen" required></textarea>
+          <input type="number" id="gram" placeholder="Angiv vægt" required>
+          <input type="number" id="pris" placeholder="Angiv pris" required></div>
+      </form>
+    </section>
 
-      <button type="button" class="gem" onclick="createFood()">Gem</button>
+    <button type="button" class="gem" onclick="createFood()">Gem</button>
 
   </section>
 
 
-<!--PROFIL-->
+  <!--PROFIL-->
   <section id="profil" class="sektion">
     <header>
       <img src="images/logo.png" alt="LOGO"> <a href="#profil"><a class="logudknap" href="#" onclick="logout()">LOG UD</a></a>
     </header>
 
 
-<div class="proinfo">
-  <div class="proinfo2">
-  </div>
-</div>
+    <div class="proinfo">
+      <div class="proinfo2">
+      </div>
+    </div>
 
   </section>
 
 
-<!--REDIGER EN RET - UPDATE-->
-<section id="editfood" class="sektion">
-  <header>
-    <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
-  </header>
-  <form>
-<h2>Opdatér din madret</h2>
+  <!--REDIGER EN RET - UPDATE-->
+  <section id="editfood" class="sektion">
+    <header>
+      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+    </header>
+    <form>
+      <h2>Opdatér din madret</h2>
 
-  <div class="infoupdate">
-    <input type="file" id="img-update" accept="image/*" onchange="previewImage(this.files[0], 'imagePreview-update')">
-    <h5><i class="material-icons">add_a_photo</i></h5>
-    <img id="imagePreview-update" class="image-preview">
-    <input type="text" id="madoverskrift-update" placeholder="Navn på portionen" required>
-    <textarea cols="10" id="madbeskrivelse-update" placeholder="Beskriv portionen" required></textarea>
-    <input type="number" id="gram-update" placeholder="Angiv vægt" required>
-    <input type="number" id="pris-update" placeholder="Angiv pris" required>
-  <button class="gemupdate" type="button" name="button" onclick="update()">Opdatér portion</button></div>
-  </form>
+      <div class="infoupdate">
+        <input type="file" id="img-update" accept="image/*" onchange="previewImage(this.files[0], 'imagePreview-update')">
+        <h5><i class="material-icons">add_a_photo</i></h5>
+        <img id="imagePreview-update" class="image-preview">
+        <input type="text" id="madoverskrift-update" placeholder="Navn på portionen" required>
+        <textarea cols="10" id="madbeskrivelse-update" placeholder="Beskriv portionen" required></textarea>
+        <input type="number" id="gram-update" placeholder="Angiv vægt" required>
+        <input type="number" id="pris-update" placeholder="Angiv pris" required>
+        <button class="gemupdate" type="button" name="button" onclick="update()">Opdatér portion</button>
+      </div>
+    </form>
   </section>
 
 
-<!--DETALJER OM MAD-->
+  <!--DETALJER OM MAD-->
   <section id="info-om-ret" class="sektion">
     <header>
       <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
@@ -137,31 +139,31 @@
     <h2>Køb din mad</h2>
 
     <div id="infomadboks">
-  <a href="#buy"><button class="gemupdate2">Luk</button></a></div>
-</div>
-    </section>
+      <a href="#buy"><button class="gemupdate2">Luk</button></a></div>
+    </div>
+  </section>
 
 
 
 
-<!--BETALING/KURVEN-->
-    <section id="payment" class="sektion">
-      <header>
-    <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
-      </header>
-      <h2>Din valgte portion</h2>
+  <!--BETALING/KURVEN-->
+  <section id="payment" class="sektion">
+    <header>
+      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+    </header>
+    <h2>Din valgte portion</h2>
     <div id="pay"></div>
-<img src="/images/mp.png" alt="mobilepay">
-<img src="/images/kort.png" alt="betalingskort">
+    <img src="/images/mp.png" alt="mobilepay">
+    <img src="/images/kort.png" alt="betalingskort">
 
-    </section>
+  </section>
 
 
   <!-- LOADEREN  -->
   <div id="loader">
     <div class="spinner"></div>
   </div>
-<!--FIREBASE SCRIPTS-->
+  <!--FIREBASE SCRIPTS-->
   <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-firestore.js"></script>
