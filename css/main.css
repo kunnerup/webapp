@@ -478,12 +478,33 @@ header img {
 }
 
 .proinfo2 {
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius:20px;
   margin: auto;
-  width: 90%;
-  height: 70%;
+  width: 80%;
+  height: 60%;
   background-color: white;
-  padding-bottom: 5%;
+padding: 15px;
+  color: var(--darkgreen);
+}
+
+.proinfo2 div {
+display: flex;
+justify-content: space-around;
+align-items: flex-start;
+text-align: center;
+}
+
+.proinfo2 div div {
+  display: flex;
+  flex-direction: column;
+  max-width: 45%;
+}
+
+.proinfo2 i {
+  font-size: 1em;
 }
 
 #profil p {
