@@ -6,6 +6,7 @@ let _spaService = new SpaService("login");
 let _madService = new MadService();
 let _selectedFoodId = "";
 let _selectedImgFile = "";
+let _currentUser;
 
 window.pageChange = function() {
   _spaService.pageChange();
@@ -20,8 +21,13 @@ window.createFood = () => {
   let gramInput = document.querySelector('#gram');
   let prisInput = document.querySelector('#pris');
 
+
   _madService.create(imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
   _spaService.navigateTo("buy");
+  document.querySelector('#madoverskrift').value = "";
+  document.querySelector('#madbeskrivelse').value = "";
+  document.querySelector('#gram').value = "";
+  document.querySelector('#pris').value = "";
 }
 
 //BILLEDET AF RETTEN
@@ -73,7 +79,7 @@ window.selectFood = (id, name, beskrivelse, img, gram, pris) => {
   _selectedFoodId = id;
   _spaService.navigateTo("editfood");
 }
-
+//opdatere madretter
 window.update = (id, name, beskrivelse, img, gram, pris) => {
   let imageInput = document.querySelector('#imagePreview-update');
   let nameInput = document.querySelector('#madoverskrift-update');
@@ -85,6 +91,59 @@ window.update = (id, name, beskrivelse, img, gram, pris) => {
   _spaService.navigateTo("buy");
 }
 
+//Tilføj til kurven
+/*
+window.addKurv = (id, name, pris) => {
+  let nameKurv = document.querySelector('#madContainerOverskrift').textContent;
+  let prisKurv = document.querySelector('#madContainerPris');
+
+  _spaService.navigateTo("payment");
+_madService.appendTilKurv(_selectedFoodId, nameKurv, prisKurv.textContent);
+}*/
+
+
+// append favourite movies to the DOM
+async function appendAddFood(madIds = []) {
+  let kurvTemplate = "";
+  if (madIds.length === 0) {
+    htmlTemplate = "<p>Tilføj ret</p>";
+  } else {
+    for (let madId of madIds) {
+      await _foodRef.doc(madId).get().then(function(doc) {
+        let mad = doc.data();
+        ret.id = doc.id;
+        htmlTemplate += `
+        <article>
+          <h2>${ret.name} </h2>
+          <button onclick="removeFromFavourites('${movie.id}')" class="rm">Remove from favourites</button>
+        </article>
+      `;
+      });
+    }
+  }
+  document.querySelector('#pay').innerHTML = kurvTemplate;
+}
+
+// adds a given movieId to the favMovies array inside _currentUser
+window.addToFavourites=(madId) => {
+  showLoader(true);
+    _spaService.navigateTo("payment");
+  _madService.foodRef.doc(_currentUser.uid).set({
+    addedFood: firebase.firestore.FieldValue.arrayUnion(madId)
+
+  }, {
+    merge: true
+
+  });
+}
+
+// removes a given movieId to the favMovies array inside _currentUser
+function removeFromFavourites(madId) {
+  showLoader(true);
+  _madService.foodRef.doc(_currentUser.uid).update({
+    addedFood: firebase.firestore.FieldValue.arrayRemove(madId)
+  });
+}
 
    // SER OM BRUGERNE LOGGES RIGTIGT IND
    firebase.auth().onAuthStateChanged(function(user) {
@@ -161,6 +220,7 @@ function showLoader(show) {
   }
 
 }
+
 
 
 //MAPBOX

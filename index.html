@@ -17,7 +17,7 @@
 </head>
 
 <body onhashchange="pageChange()">
-  <!-- MENU -->
+  <!-- MENU(onhashchange registrerer om der er sker ændringer) -->
   <nav id="menu" class="menu hide">
     <a href="#buy"><img src="images/buy.png" alt="køb mad logo"></a>
     <a href="#lokation"><img src="images/pointer.png" alt="mad i nærheden logo"></a>
@@ -25,8 +25,8 @@
   </nav>
 
   <!-- pages -->
-  <!-- home page -->
 
+<!--Login-->
   <section id="login" class="sektion">
 
       <img id="biglogo" src="images/logo.png" alt="logo SU Portionen">
@@ -41,7 +41,7 @@
   <h4>Hjælp dig selv og andre<br><span class="darkgreen">med maden</span></h4>
   </section>
 
-
+<!--Liste med madretter-->
   <section id="buy" class="sektion">
     <header>
 <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
@@ -91,6 +91,8 @@
 
   </section>
 
+
+<!--Profil-->
   <section id="profil" class="sektion">
     <header>
       <img src="images/logo.png" alt="LOGO"> <a href="#profil"><a class="logudknap" href="#" onclick="logout()">LOG UD</a></a>
@@ -104,6 +106,8 @@
 
   </section>
 
+
+<!--Rediger en ret-->
 <section id="editfood" class="sektion">
   <header>
     <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
@@ -121,11 +125,10 @@
     <input type="number" id="pris-update" placeholder="Angiv pris" required>
   <button class="gemupdate" type="button" name="button" onclick="update()">Opdatér portion</button></div>
   </form>
-
   </section>
 
 
-
+<!--Detaljer om mad-->
   <section id="info-om-ret" class="sektion">
     <header>
       <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
@@ -138,6 +141,20 @@
 </div>
     </section>
 
+
+
+
+<!--Betaling/kurv-->
+    <section id="payment" class="sektion">
+      <header>
+    <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+      </header>
+      <h2>Din valgte portion</h2>
+    <div id="pay"></div>
+<img src="/images/mp.png" alt="mobilepay">
+<img src="/images/kort.png" alt="betalingskort">
+
+    </section>
 
 
   <!-- loader  -->

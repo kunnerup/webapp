@@ -18,6 +18,7 @@ export default class MadService {
         retter.push(ret);
       });
       this.appendFood(retter);
+      this.appendAddFood(_currentUser.addedFood);
     });
   }
 
@@ -50,18 +51,18 @@ export default class MadService {
     <article class="foodinfo">
     <a href="#buy"><div class="returnbuy"><i class="material-icons">close</i></div></a>
 
-<h2 span="bold">${name}</h2>
+<h2 id="madContainerOverskrift" span="bold">${name}</h2>
 <br>
-  <img src="${img}">
+  <img id="madContainerImg" src="${img}">
 <br>
 <p><span class="darkgreen">Beskrivelse</span>
 <br>
 ${beskrivelse}</p>
 <br>
 <p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
-
+<p id="madContainerPris" span="bold">${pris}kr.</span></p> 
 <div class="muligheder">
-<div><i class="material-icons">
+<div><i class="material-icons" onclick="addToFavourites(madId)">
 add_box
 </i> <p>Tilføj og søg videre</p></div>
 <div><i class="material-icons">add_shopping_cart</i>
@@ -75,6 +76,21 @@ add_box
     document.querySelector('#infomadboks').innerHTML = skabelon;
   }
 
+//Tilføjer den valgte portion til kurven
+appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
+  console.log(id, nameKurv, imageKurv, prisKurv);
+  let kurvTemplate = "";
+  kurvTemplate += `
+  <article class="kurven">
+  <a href="#buy"><div class="returnbuy"><i class="material-icons">close</i></div></a>
+
+<h2 span="bold">${nameKurv}</h2>
+
+</article>
+  `;
+
+  document.querySelector('#pay').innerHTML = kurvTemplate;
+}
 
   // TILFØJ NY PORTION - Rækkefølgen!
   create(img, name, beskrivelse, gram, pris) {
@@ -104,8 +120,19 @@ let foodToUpdate = {
 };
 this.foodRef.doc(id).set(foodToUpdate);
 }
-
-
+//tilføj til kurv
+/*
+addKurv(id, img, nameKurv, beskrivelse, gram, pris){
+let addToKurv = {
+  img: img,
+  name: nameKurv,
+  beskrivelse: beskrivelse,
+  gram: gram,
+  pris: pris
+};
+this.foodRef.doc(id).add(addToKurv);
+}
+*/
 logout() {
 authService.logout();
 }
