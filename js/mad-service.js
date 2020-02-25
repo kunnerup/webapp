@@ -57,8 +57,18 @@ export default class MadService {
 <p><span class="darkgreen">Beskrivelse</span>
 <br>
 ${beskrivelse}</p>
+<br>
+<p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
 
-<div class="skubop"></div>
+<div class="muligheder">
+<div><i class="material-icons">
+add_box
+</i> <p>Tilføj og søg videre</p></div>
+<div><i class="material-icons">add_shopping_cart</i>
+<p>Køb portion</p></div>
+
+</div>
+
 </article>
     `;
 

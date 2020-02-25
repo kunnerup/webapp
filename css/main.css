@@ -137,6 +137,16 @@ header img {
   font-style: italic;
 }
 
+.logudknap{
+  background-color: var(--lightgreen);
+  text-decoration: none;
+  color: var(--white_text);
+  padding: 10px 20px 10px 20px;
+  border-radius: 20px;
+  align-self: center;
+margin-right: 10px;
+}
+
 /*-------KØB MAD--------*/
 .buy-container {
   position: absolute;
@@ -157,12 +167,12 @@ padding-bottom: 3  0px;
 
 #mad-container {
   display: grid;
-  grid-auto-rows: 25%;
+  grid-auto-rows: 150px;
   grid-template-columns: 95%;
   justify-content: center;
   scroll-behavior: smooth;
   overflow: scroll;
-  margin-bottom: 75px;
+  margin-bottom: 72px;
 }
 
 #mad-container article {
@@ -210,8 +220,9 @@ height: 32vh;
   position: absolute;
   justify-content:space-around;
   width: 35%;
-  margin-top: 100px;
-  font-size: 10px;
+  margin-top: 113px;
+  font-size: 13px;
+
 }
 
 #info-om-ret {
@@ -221,14 +232,16 @@ height: 32vh;
 
 .foodinfo{
   position: absolute;
+  height: auto;
   bottom: 70px;
-  height: 70vh;
+  top: 20%;
   width: 100%;
   border-top-left-radius: 30px;  border-top-right-radius: 30px;
-  box-shadow: 0 0 10px black;
   background-color: white;
-  justify-content: center;
+  justify-content:center;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+               overflow-x: auto;
 }
 
 .foodinfo img {
@@ -245,7 +258,7 @@ height: 32vh;
 }
 
 .foodinfo h2 {
-  padding-top: 30px;
+  padding-top: 50px;
 }
 
 .returnbuy {
@@ -255,10 +268,19 @@ height: 32vh;
   color: var(--darkgreen);
 }
 
-.skubop {
-  height: 100px;
-  width: 100px;
-  background: white;
+.muligheder {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.muligheder p {
+  font-size: 10px;
+}
+
+.muligheder i {
+  font-size: 3em;
 }
 
 /*--------Sælg en portion------------*/
@@ -327,6 +349,23 @@ margin-bottom: 10px;
   padding-bottom: 5%;
   padding-top: 15px;
 }
+
+/*---------KORT---------*/
+#map {
+width: 100%;
+height: 60vh;
+position: absolute;
+bottom: 70px;
+border-top-left-radius: 30px;  border-top-right-radius: 30px;
+}
+
+#lokation h2{
+  margin-top: 8px;
+}
+#lokation p {
+text-align: center;
+}
+
 
 /*-------------UPDATE MADEN---------------*/
 .infoupdate{
@@ -438,6 +477,10 @@ overflow: scroll;
   height: 70%;
   background-color: white;
   padding-bottom: 5%;
+}
+
+#profil p {
+  text-align: center;
 }
 
 

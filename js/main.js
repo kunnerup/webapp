@@ -146,7 +146,7 @@ function hideMenu(hide) {
 
 function appendUserData(user) {
   document.querySelector('#profil').innerHTML += `
-    <h3>${user.displayName}</h3>
+  <br><h2>${user.displayName}</h2>
     <p>${user.email}</p>
   `;
 }
@@ -161,3 +161,23 @@ function showLoader(show) {
   }
 
 }
+
+
+//MAPBOX
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYTU1MDgiLCJhIjoiY2syMDZ5bXBtMDBuZTNlcXpvbnozYzJuZSJ9.Wo5gS17JDQ8hYPQ82hQlgA';
+let map = new mapboxgl.Map({
+container: 'map', // MAP ID (HTML)
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [10.203921, 56.162939], // START POSITION
+zoom: 13 // START ZOOM
+});
+
+// Add geolocate control to the map.
+map.addControl(
+new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+trackUserLocation: true
+})
+);

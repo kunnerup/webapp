@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="shortcut icon" type="image/png" href="images/logo.png" />
   <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css" rel="stylesheet" />
 </head>
 
 <body onhashchange="pageChange()">
@@ -62,7 +63,9 @@
     <header>
   <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
     </header>
-
+    <h2>Mad i nærheden</h2>
+    <p>Retterne på kortet er klar til bestilling.</p>
+<div id="map"></div>
   </section>
 
 
@@ -90,10 +93,10 @@
 
   <section id="profil" class="sektion">
     <header>
-      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><a class="logudknap" href="#" onclick="logout()">LOG UD</a></a>
     </header>
 
-    <a href="#" onclick="logout()">LOG UD</a>
+
 <div class="proinfo">
   <div class="proinfo2">
   </div>
