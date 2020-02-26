@@ -15,6 +15,7 @@ window.pageChange = function() {
 authService.init();
 window.logout = () => {
   authService.logout();
+  spaService.navigateTo("login");
   }
 
 //CREATE MAD
@@ -51,7 +52,6 @@ window.previewImage = (file, previewId) => {
 
 //DELETE MAD
   window.deleteRet = (id) => {
-    console.log(id);
     madService.delete(id);
   }
 
@@ -60,6 +60,16 @@ window.previewImage = (file, previewId) => {
       window.showInfo = (id, name, beskrivelse, img, gram, pris) => {
         spaService.navigateTo("info-om-ret");
       madService.appendFoodInfo(id, name, beskrivelse, img, gram, pris);
+      }
+
+
+      window.addToBasket = (id, name, beskrivelse, img, gram, pris) => {
+        spaService.navigateTo("payment");
+      madService.appendAddFood(id, name, beskrivelse, img, gram, pris);
+      }
+
+      window.appendAuthUser = () => {
+        authService.appendAuthUser(id, name, beskrivelse, img, gram, pris);
       }
 
 //SØGEFUNKTION

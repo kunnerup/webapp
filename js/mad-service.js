@@ -98,33 +98,31 @@ appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
 
 
 userHasAdded(favRetId){
-  if(authService.authUser.addedFood && authService.authUser.addedFood.includes(favRetId)){
+  if(authService.addedFood && authService.addedFood.includes(favRetId)){
     return true;
   }
   else{
     return false;
   }
 }
-addToBasket(id){
+addToBasket(id, name, beskrivelse, img, gram, pris){
   spaService.navigateTo("buy");
   authService.authUserRef.set({
-    addedFood: firebase.firestore.FieldValue.arrayUnion(ret.id)
+    addedFood: firebase.firestore.FieldValue.arrayUnion(id)
   }, {
     merge: true
   });
 }
 
-removeFromBasket(id){
+removeFromBasket(id, name, beskrivelse, img, gram, pris){
   authService.authUserRef.update({
-    addedFood: firebase.firestore.FieldValue.arrayRemove(ret.id)
-
-
+    addedFood: firebase.firestore.FieldValue.arrayRemove(id)
   });
 }
-async getAddedFood(){
+async getAddedFood(id, name, beskrivelse, img, gram, pris){
   let addedFood = [];
-  if (authService.authUser.addedFood){
-  for (let id of authService.authUser.addedFood){
+  if (authService.addedFood){
+  for (let id of authService.addedFood){
     await authService.userRef.doc(madId).get().then(function (doc){
       let ret = doc.data();
       ret.id = doc.id;
@@ -135,7 +133,7 @@ async getAddedFood(){
 return addedFood;
 }
 
-async appendAddFood(){
+async appendAddFood(id, name, beskrivelse, img, gram, pris){
   let retter = await madService.getAddedFood();
   let kurvTemplate = "";
   for (let ret of retter){

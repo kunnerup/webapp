@@ -55,7 +55,7 @@ class AuthService {
           ...userData.data()
         }; //concating two objects: authUser object and userData objec from the db
         this.authUser = user;
-        this.appendAuthUser();
+        this.appendAuthUser(id, name, beskrivelse, img, gram, pris);
         this.init();
       }
 
@@ -65,7 +65,7 @@ class AuthService {
     firebase.auth().signOut();
   }
   appendAuthUser() {
-    document.querySelector('#nameandmail').innerHTML = `
+    document.querySelector('#profil').innerHTML = `
   <br><h2>${this.authUser.displayName}</h2>
    <p>${this.authUser.email}</p>
   `;
