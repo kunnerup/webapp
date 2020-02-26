@@ -1,10 +1,12 @@
-import {
-  firebaseDB
-} from "./firebase-service.js";
+import authService from "./auth.js";
 
-export default class MadService {
+
+class MadService {
   constructor() {
-    this.foodRef = firebaseDB.collection("users");
+    this.foodRef = firebaseDB.collection("madretter");
+    this.userRef = firebaseDB.collection("users");
+    this.authUser;
+    this.authUserRef;
     this.read();
   }
 
@@ -18,9 +20,10 @@ export default class MadService {
         retter.push(ret);
       });
       this.appendFood(retter);
-      this.appendAddFood(_currentUser.addedFood);
     });
+  /*  this.appendToBasket()*/
   }
+
 
   // SENDER MADRETTER TIL DOMMEN
   appendFood(retter) {
@@ -60,9 +63,9 @@ export default class MadService {
 ${beskrivelse}</p>
 <br>
 <p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
-<p id="madContainerPris" span="bold">${pris}kr.</span></p> 
+<p id="madContainerPris" span="bold">${pris}kr.</span></p>
 <div class="muligheder">
-<div><i class="material-icons" onclick="addToFavourites(madId)">
+<div><i class="material-icons" onclick="addToFavourites('${id}')">
 add_box
 </i> <p>Tilføj og søg videre</p></div>
 <div><i class="material-icons">add_shopping_cart</i>
@@ -75,7 +78,7 @@ add_box
 
     document.querySelector('#infomadboks').innerHTML = skabelon;
   }
-
+/*
 //Tilføjer den valgte portion til kurven
 appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
   console.log(id, nameKurv, imageKurv, prisKurv);
@@ -89,6 +92,64 @@ appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
 </article>
   `;
 
+  document.querySelector('#pay').innerHTML = kurvTemplate;
+}
+*/
+
+
+userHasAdded(favRetId){
+  if(this.authUser.addedFood && this.authUser.addedFood.includes(favRetId)){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+addToBasket(id){
+  this.authUserRef.set({
+    addedFood: firebase.firestore.FieldValue.arrayUnion(id)
+
+  }, {
+    merge: true
+  });
+}
+
+removeFromBasket(id){
+  this.authUserRef.update({
+    addedFood: firebase.firestore.FieldValue.arrayRemove(id)
+
+
+  });
+}
+async getAddedFood(){
+  let addedFood = [];
+  for (let id of authService.authUser.addedFood){
+    await this.userRef.doc(id).get().then(function (doc){
+      let ret = doc.data();
+      ret.id = doc.id;
+      addedFood.push(ret);
+    });
+  }
+return addedFood;
+}
+
+async appendAddFood(){
+  let retter = await madService.getAddedFood();
+  let kurvTemplate = "";
+  for (let ret of retter){
+    kurvTemplate +=`
+<article>
+<h2>${ret.name}</h2>
+</article>
+    `
+  }
+  if(retter.length === 0){
+    kurvTemplate = `
+    <article>
+<h3>tilføj venligst en ret</h3>
+
+    </article>`;
+  }
   document.querySelector('#pay').innerHTML = kurvTemplate;
 }
 
@@ -133,7 +194,7 @@ let addToKurv = {
 this.foodRef.doc(id).add(addToKurv);
 }
 */
-logout() {
-authService.logout();
+
 }
-}
+const madService = new MadService();
+export default madService;

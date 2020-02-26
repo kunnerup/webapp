@@ -1,4 +1,4 @@
-export default class SpaService {
+ class SpaService {
   constructor(defaultPage) {
     this.defaultPage = defaultPage;
     this.pages = document.querySelectorAll(".sektion");
@@ -42,3 +42,5 @@ pageChange() {
 }
 
 }
+const spaService = new SpaService("buy");
+export default spaService;

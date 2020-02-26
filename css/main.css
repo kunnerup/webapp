@@ -359,6 +359,10 @@ bottom: 70px;
 border-top-left-radius: 30px;  border-top-right-radius: 30px;
 }
 
+.mapboxgl-canvas{
+  height: auto;
+}
+
 #lokation h2{
   margin-top: 8px;
 }
