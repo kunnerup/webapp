@@ -7,7 +7,7 @@ import authService from "./auth.js";
 let _selectedFoodId = "";
 let _selectedImgFile = "";
 
-
+//FÅR SIDEN TIL AT SKIFTE NÅR DER KLIKKES
 window.pageChange = function() {
   spaService.pageChange();
 }
@@ -19,7 +19,7 @@ window.logout = () => {
 
 //CREATE MAD
 window.createFood = () => {
-  // references to the input fields
+  // Finder inputfelterne
   let imageInput = document.querySelector('#imagePreview');
   let nameInput = document.querySelector('#madoverskrift');
   let beskrivelseInput = document.querySelector('#madbeskrivelse');
@@ -46,7 +46,8 @@ window.previewImage = (file, previewId) => {
       document.querySelector('#' + previewId).setAttribute('src', event.target.result);
     };
     reader.readAsDataURL(file);
-  }}
+  }
+}
 
 //DELETE MAD
   window.deleteRet = (id) => {
@@ -74,6 +75,7 @@ window.selectFood = (id, name, beskrivelse, img, gram, pris) => {
   let gramInput = document.querySelector('#gram-update');
   let prisInput = document.querySelector('#pris-update');
 
+  //Indstiller værdien i inputfelterne
   nameInput.value = name;
   beskrivelseInput.value = beskrivelse;
   imageInput.src = img;
@@ -118,20 +120,20 @@ _madService.appendTilKurv(_selectedFoodId, nameKurv, prisKurv.textContent);
 
 
 //MAPBOX
-mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYTU1MDgiLCJhIjoiY2syMDZ5bXBtMDBuZTNlcXpvbnozYzJuZSJ9.Wo5gS17JDQ8hYPQ82hQlgA';
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYTU1MDgiLCJhIjoiY2syMDZ5bXBtMDBuZTNlcXpvbnozYzJuZSJ9.Wo5gS17JDQ8hYPQ82hQlgA'; //Vores acceptoken
 let map = new mapboxgl.Map({
-container: 'map', // MAP ID (HTML)
-style: 'mapbox://styles/mapbox/streets-v11',
-center: [10.203921, 56.162939], // START POSITION
-zoom: 13 // START ZOOM
+  container: 'map', // MAP-ID (HTML)
+  style: 'mapbox://styles/mapbox/streets-v11', //stylesheetet
+  center: [10.203921, 56.162939], // START POSITION
+  zoom: 13 // START ZOOM
 });
 
-// Add geolocate control to the map.
+//Find ud af hvor brugeren er og brug dette til lokation ved tryk
 map.addControl(
-new mapboxgl.GeolocateControl({
-positionOptions: {
-enableHighAccuracy: true
-},
-trackUserLocation: true
-})
+  new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  })
 );

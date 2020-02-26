@@ -2,8 +2,8 @@
   constructor(defaultPage) {
     this.defaultPage = defaultPage;
     this.pages = document.querySelectorAll(".sektion");
-      this.navItems = document.querySelectorAll("#menu a");
-      this.pageChange();
+    this.navItems = document.querySelectorAll("#menu a");
+    this.pageChange();
   }
 
   //SKJUL ALLE SIDER
@@ -13,33 +13,33 @@
     }
   }
 
-//LAVE FUNKTIONEN SHOWPAGE DER VISER SIDERNE
-showPage(pageId) {
-  this.hideAllPages();
-  document.querySelector(`#${pageId}`).style.display = "block";
-  this.setActiveTab(pageId);
-}
-//
-setActiveTab(pageId) {
-  for (let navItem of this.navItems) {
-    if (`#${pageId}` === navItem.getAttribute("href")) {
-      navItem.classList.add("active");
-    } else {
-      navItem.classList.remove("active");
+  //LAVE FUNKTIONEN SHOWPAGE DER VISER SIDERNE
+  showPage(pageId) {
+    this.hideAllPages();
+    document.querySelector(`#${pageId}`).style.display = "block";
+    this.setActiveTab(pageId);
+  }
+  //
+  setActiveTab(pageId) {
+    for (let navItem of this.navItems) {
+      if (`#${pageId}` === navItem.getAttribute("href")) {
+        navItem.classList.add("active");
+      } else {
+        navItem.classList.remove("active");
+      }
     }
   }
-}
-navigateTo(pageId) {
-  window.location.href = `#${pageId}`;
-}
-
-pageChange() {
-  let page = this.defaultPage;
-  if (window.location.hash) {
-    page = window.location.hash.slice(1);
+  navigateTo(pageId) {
+    window.location.href = `#${pageId}`;
   }
-  this.showPage(page);
-}
+
+  pageChange() {
+    let page = this.defaultPage;
+    if (window.location.hash) {
+      page = window.location.hash.slice(1);
+    }
+    this.showPage(page);
+  }
 
 }
 const spaService = new SpaService("buy");

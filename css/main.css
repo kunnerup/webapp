@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
@@ -52,6 +52,7 @@ p, h1, h2, h3, h4, h5, h6 {
   from {
     opacity: 0
   }
+
   to {
     opacity: 1
   }
@@ -64,13 +65,13 @@ p, h1, h2, h3, h4, h5, h6 {
   z-index: 100;
   bottom: 0;
   width: 100%;
-  height:70px;
+  height: 70px;
   justify-content: space-around;
   background-color: var(--white);
   border-top: 1.5px solid black;
 }
 
-.hide{
+.hide {
   visibility: hidden;
   opacity: 0;
 }
@@ -99,7 +100,6 @@ header img {
 /*--------LOGIN SIDEN--------*/
 #firebaseui-auth-container {
   width: 100%;
-
 }
 
 #log {
@@ -125,8 +125,6 @@ header img {
   padding: 25px;
 }
 
-
-
 #login h4 {
   bottom: 2%;
   right: 2%;
@@ -137,14 +135,14 @@ header img {
   font-style: italic;
 }
 
-.logudknap{
+.logudknap {
   background-color: var(--lightgreen);
   text-decoration: none;
   color: var(--white_text);
   padding: 10px 20px 10px 20px;
   border-radius: 20px;
   align-self: center;
-margin-right: 10px;
+  margin-right: 10px;
 }
 
 /*-------KØB MAD--------*/
@@ -152,12 +150,13 @@ margin-right: 10px;
   position: absolute;
   bottom: 0;
   background-color: var(--white);
-height: 60vh;
-width: 100%;
-border-top-left-radius: 30px;  border-top-right-radius: 30px;
-box-shadow: 0 0 10px black;
-padding-top: 40px;
-padding-bottom: 3  0px;
+  height: 60vh;
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0 0 10px black;
+  padding-top: 40px;
+  padding-bottom: 3 0px;
 }
 
 .stars {
@@ -183,20 +182,20 @@ padding-bottom: 3  0px;
 }
 
 #mad-container article img {
-height: auto;
-width: 40%;
-object-fit: scale-down;
-border-radius: 15px;
-padding-right: 15px;
+  height: auto;
+  width: 40%;
+  object-fit: scale-down;
+  border-radius: 15px;
+  padding-right: 15px;
 }
 
-#buy, #editfood{
+#buy, #editfood {
   background: linear-gradient(var(--lightgreen), var(--darkgreen));
   width: 100%;
-height: 32vh;
+  height: 32vh;
 }
 
-#buy input{
+#buy input {
   display: block;
   margin: auto;
   width: 65vw;
@@ -218,11 +217,10 @@ height: 32vh;
 .redslet {
   display: flex;
   position: absolute;
-  justify-content:space-around;
+  justify-content: space-around;
   width: 35%;
   margin-top: 113px;
   font-size: 13px;
-
 }
 
 #info-om-ret {
@@ -230,18 +228,19 @@ height: 32vh;
   height: 40vh;
 }
 
-.foodinfo{
+.foodinfo {
   position: absolute;
   height: auto;
   bottom: 70px;
   top: 20%;
   width: 100%;
-  border-top-left-radius: 30px;  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
   background-color: white;
-  justify-content:center;
+  justify-content: center;
   scroll-behavior: smooth;
   overflow-x: hidden;
-               overflow-x: auto;
+  overflow-x: auto;
 }
 
 .foodinfo img {
@@ -262,7 +261,7 @@ height: 32vh;
 }
 
 .returnbuy {
-  position:absolute;
+  position: absolute;
   padding-top: 14px;
   right: 7%;
   color: var(--darkgreen);
@@ -288,14 +287,15 @@ height: 32vh;
   position: absolute;
   bottom: 0;
   background: linear-gradient(var(--lightgreen), var(--darkgreen));
-height: 63vh;
-width: 100%;
-border-top-left-radius: 30px;  border-top-right-radius: 30px;
-box-shadow: 0 0 10px black;
-padding-top: 40px;
-padding-bottom: 20px;
-scroll-behavior: smooth;
-overflow: scroll;
+  height: 63vh;
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0 0 10px black;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+  overflow: scroll;
 }
 
 #sell-container {
@@ -307,32 +307,32 @@ overflow: scroll;
   padding: 6px;
   border-radius: 10px;
   border: 0.5px solid var(--lightgreen);
-    font-family: 'PT Sans';
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--darkgreen);
+  font-family: 'PT Sans';
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--darkgreen);
 }
 
 ::placeholder {
   color: var(--darkgreen);
 }
 
-.addpic{
+.addpic {
   padding: 10px;
   border-radius: 10px;
-  margin:10px auto;
+  margin: 10px auto;
   width: 10%;
   height: 10%;
   background-color: white;
 }
+
 .addportion {
-color: #3B9B86;
-text-align: center;
-margin-bottom: 10px;
+  color: #3B9B86;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-
-.info{
+.info {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -352,11 +352,12 @@ margin-bottom: 10px;
 
 /*---------KORT---------*/
 #map {
-width: 100%;
-height: 60vh;
-position: absolute;
-bottom: 70px;
-border-top-left-radius: 30px;  border-top-right-radius: 30px;
+  width: 100%;
+  height: 60vh;
+  position: absolute;
+  bottom: 70px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .mapboxgl-canvas{
@@ -366,13 +367,13 @@ border-top-left-radius: 30px;  border-top-right-radius: 30px;
 #lokation h2{
   margin-top: 8px;
 }
+
 #lokation p {
-text-align: center;
+  text-align: center;
 }
 
-
 /*-------------UPDATE MADEN---------------*/
-.infoupdate{
+.infoupdate {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -391,7 +392,7 @@ text-align: center;
 
 .infoupdate i {
   position: absolute;
-left: 43.5%;
+  left: 43.5%;
   display: block;
   font-size: 40px;
   z-index: 1;
@@ -400,23 +401,25 @@ left: 43.5%;
 #imagePreview-update {
   max-height: 25vh;
   width: auto;
-padding: 20px;
+  padding: 20px;
 }
 
 #img-update {
   width: 25%;
   height: 35px;
 }
-#img-update  {
+
+#img-update {
   overflow: hidden;
   opacity: 0;
-z-index: 3;
+  z-index: 3;
 }
 
-.gemupdate{
+.gemupdate {
   margin: auto;
-  border-style: solid; color: white;
-   border-width: thin;
+  border-style: solid;
+  color: white;
+  border-width: thin;
   border-radius: 10px;
   padding: 10px;
   background-color: #20A285;
@@ -425,8 +428,8 @@ z-index: 3;
 }
 
 #madoverskrift, #madoverskrift-update {
-height: 20px;
-width: 80%;
+  height: 20px;
+  width: 80%;
 }
 
 #madbeskrivelse, #madbeskrivelse-update {
@@ -449,49 +452,69 @@ width: 80%;
   margin-right: 12px;
 }
 
-.gem{
+.gem {
   position: absolute;
   top: 85%;
   left: 80%;
-  border-style: solid; color: white;
-   border-width: thin;
+  border-style: solid;
+  color: white;
+  border-width: thin;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 100px;
   background-color: #20A285;
 }
+
 /*----------profil----------*/
-.proinfo{
+.proinfo {
   position: absolute;
   bottom: 0;
   background: linear-gradient(var(--lightgreen), var(--darkgreen));
-height: 63vh;
-width: 100%;
-border-top-left-radius: 30px;  border-top-right-radius: 30px;
-box-shadow: 0 0 10px black;
-padding-top: 40px;
-padding-bottom: 20px;
-scroll-behavior: smooth;
-overflow: scroll;
+  height: 63vh;
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0 0 10px black;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+  overflow: scroll;
 }
-.proinfo2{
-  border-radius: 10px;
+
+.proinfo2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius:20px;
   margin: auto;
-  width: 90%;
-  height: 70%;
+  width: 80%;
+  height: 60%;
   background-color: white;
-  padding-bottom: 5%;
+padding: 15px;
+  color: var(--darkgreen);
+}
+
+.proinfo2 div {
+display: flex;
+justify-content: space-around;
+align-items: flex-start;
+text-align: center;
+}
+
+.proinfo2 div div {
+  display: flex;
+  flex-direction: column;
+  max-width: 45%;
+}
+
+.proinfo2 i {
+  font-size: 1em;
 }
 
 #profil p {
   text-align: center;
 }
 
+@media (min-width: 600px) {}
 
-@media (min-width: 600px) {
-
-}
-
-@media (min-width: 992px) {
-
-}
+@media (min-width: 992px) {}

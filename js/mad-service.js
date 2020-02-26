@@ -47,7 +47,7 @@ class MadService {
   }
 
 
-  // MERE DETALJERET INFO
+  // MERE DETALJERET INFO OM RETTERNE
   appendFoodInfo(id, name, beskrivelse, img, gram, pris) {
     console.log(id, name, beskrivelse, img, gram, pris);
     let skabelon = `
@@ -87,10 +87,10 @@ appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
   <article class="kurven">
   <a href="#buy"><div class="returnbuy"><i class="material-icons">close</i></div></a>
 
-<h2 span="bold">${nameKurv}</h2>
+  <h2 span="bold">${nameKurv}</h2>
 
-</article>
-  `;
+  </article>
+    `;
 
   document.querySelector('#pay').innerHTML = kurvTemplate;
 }
@@ -164,22 +164,39 @@ async appendAddFood(){
     });
   }
 
-//SLET RET
-delete(id) {
-this.foodRef.doc(id).delete();
-}
+  //SLET RET
+  delete(id) {
+    this.foodRef.doc(id).delete();
+  }
 
 
-//OPDATER MADRETTER
-update(id, img, name, beskrivelse, gram, pris){
-let foodToUpdate = {
-  img: img,
-  name: name,
-  beskrivelse: beskrivelse,
-  gram: gram,
-  pris: pris
-};
-this.foodRef.doc(id).set(foodToUpdate);
+  //OPDATER MADRETTER
+  update(id, img, name, beskrivelse, gram, pris) {
+    let foodToUpdate = {
+      img: img,
+      name: name,
+      beskrivelse: beskrivelse,
+      gram: gram,
+      pris: pris
+    };
+    this.foodRef.doc(id).set(foodToUpdate);
+  }
+  //tilføj til kurv
+  /*
+  addKurv(id, img, nameKurv, beskrivelse, gram, pris){
+  let addToKurv = {
+    img: img,
+    name: nameKurv,
+    beskrivelse: beskrivelse,
+    gram: gram,
+    pris: pris
+  };
+  this.foodRef.doc(id).add(addToKurv);
+  }
+  */
+  logout() {
+    authService.logout();
+  }
 }
 //tilføj til kurv
 /*
