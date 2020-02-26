@@ -511,6 +511,15 @@ text-align: center;
   font-size: 1em;
 }
 
+#nameandmail {
+  font-size: 2em;
+  color: black;
+  position: absolute;
+  width: 90%;
+  height: 100px;
+  top: 0;
+}
+
 #profil p {
   text-align: center;
 }
