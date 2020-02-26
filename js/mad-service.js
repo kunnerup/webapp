@@ -35,7 +35,7 @@ class MadService {
         <p><span class="bold">${ret.name}</span><br>
         <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i><br>
         ${ret.gram} g <br>
-        ${ret.pris} kr </p>
+      <span class="bold">  ${ret.pris} kr </span> </p>
 <div class="redslet">
 <p class="rediger" onclick="selectFood('${ret.id}','${ret.name}', '${ret.beskrivelse}', '${ret.img}', '${ret.gram}', '${ret.pris}')">REDIGER</p>
 <p class="slet" onclick="deleteRet('${ret.id}')">SLET</p>
@@ -63,9 +63,9 @@ class MadService {
 ${beskrivelse}</p>
 <br>
 <p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
-<p id="madContainerPris" span="bold">${pris}kr.</span></p>
+<p id="madContainerPris" <span class="bold">${pris}kr.</span></p>
 <div class="muligheder">
-<div><i class="material-icons" onclick="addToFavourites('${id}')">
+<div><i class="material-icons" onclick="addToBasket('${id}')">
 add_box
 </i> <p>Tilføj og søg videre</p></div>
 <div><i class="material-icons">add_shopping_cart</i>
@@ -98,7 +98,7 @@ appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
 
 
 userHasAdded(favRetId){
-  if(this.authUser.addedFood && this.authUser.addedFood.includes(favRetId)){
+  if(authService.authUser.addedFood && authService.authUser.addedFood.includes(favRetId)){
     return true;
   }
   else{
@@ -106,30 +106,32 @@ userHasAdded(favRetId){
   }
 }
 addToBasket(id){
-  this.authUserRef.set({
-    addedFood: firebase.firestore.FieldValue.arrayUnion(id)
-
+  spaService.navigateTo("buy");
+  authService.authUserRef.set({
+    addedFood: firebase.firestore.FieldValue.arrayUnion(ret.id)
   }, {
     merge: true
   });
 }
 
 removeFromBasket(id){
-  this.authUserRef.update({
-    addedFood: firebase.firestore.FieldValue.arrayRemove(id)
+  authService.authUserRef.update({
+    addedFood: firebase.firestore.FieldValue.arrayRemove(ret.id)
 
 
   });
 }
 async getAddedFood(){
   let addedFood = [];
+  if (authService.authUser.addedFood){
   for (let id of authService.authUser.addedFood){
-    await this.userRef.doc(id).get().then(function (doc){
+    await authService.userRef.doc(madId).get().then(function (doc){
       let ret = doc.data();
       ret.id = doc.id;
       addedFood.push(ret);
     });
   }
+}
 return addedFood;
 }
 
@@ -198,20 +200,6 @@ async appendAddFood(){
     authService.logout();
   }
 }
-//tilføj til kurv
-/*
-addKurv(id, img, nameKurv, beskrivelse, gram, pris){
-let addToKurv = {
-  img: img,
-  name: nameKurv,
-  beskrivelse: beskrivelse,
-  gram: gram,
-  pris: pris
-};
-this.foodRef.doc(id).add(addToKurv);
-}
-*/
 
-}
 const madService = new MadService();
 export default madService;
