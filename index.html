@@ -104,7 +104,7 @@
         <h3>Profiltekst</h3>
         <p id="ptekst">Jeg hedder Jonas, og jeg er glad for at lave mad. Derfor vil jeg også gerne hjælpe andre til at få god mad!</p>
         <h3>Mine ordre</h3>
-        <p class="mineordre">Ingen ordre</p>
+        <p id="mineordre">Ingen ordre</p>
         <div>
 
           <div>
@@ -168,19 +168,29 @@
     <h2>Klar til betaling</h2>
     <div id="pay"></div>
 
-<a href="#buy"><h4 id="mersalg">Tilføj mere mad</h4></a>
+<a class="textdeco" href="#buy"><h4 id="mersalg">Tilføj mere mad</h4></a>
 
     <h3>Tryk nedenfor for valg af betalingsform:</h3>
-    <img class="betalinger" src="/images/mp.png" alt="mobilepay">
+<img class="betalinger" src="/images/mp.png" alt="mobilepay" onclick="makePay()">
     <img class="betalinger" src="/images/kort.png" alt="betalingskort">
 
   </section>
 
 
+  <section id="succes" class="sektion">
+    <header>
+      <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
+    </header>
+
+    <h2>Kvittering</h2>
+    <div id="kvittering">
+    </div>
+  </section>
+
+
   <!-- LOADEREN  -->
-  <div id="loader">
-    <div class="spinner"></div>
-  </div>
+  <div id="uxspinner"></div>
+
   <!--FIREBASE SCRIPTS-->
   <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script>

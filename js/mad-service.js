@@ -21,7 +21,7 @@ class MadService {
       });
       this.appendFood(retter);
     });
-  /*  this.appendToBasket()*/
+
   }
 
 
@@ -123,16 +123,24 @@ async appendAddFood(){
 <h2>${ret.name}</h2>
 <p><span class="bold">${ret.pris}</span>kr.</p>
 </article>
-    `
-  }
-  if(retter.length === 0){
-    kurvTemplate = `
-    <article>
-<h3>Tilføj venligst en ret</h3>
-
-    </article>`;
-  }
+    `}
   document.querySelector('#pay').innerHTML = kurvTemplate;
+}
+
+async appendFoodToProfile(){
+  let retter = await madService.getAddedFood();
+  let kvittering = "";
+  let mineordre = "";
+  let time = new Date();
+  for (let ret of retter){
+  kvittering += `<article class="kvitten">
+  <h2>1 * ${ret.name}</h2>
+      `
+  mineordre += `<article class="orders">
+  <p>1 * ${ret.name} (${time.getDate()}/${time.getMonth()+1}/${time.getFullYear()})</p>
+      `}
+    document.querySelector('#kvittering').innerHTML = kvittering;
+    document.querySelector('#mineordre').innerHTML = mineordre;
 }
 
   // TILFØJ NY PORTION - Rækkefølgen!

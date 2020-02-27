@@ -13,6 +13,8 @@ window.pageChange = function() {
 }
 
 authService.init();
+
+
 window.logout = () => {
   authService.logout();
   spaService.navigateTo("login");
@@ -64,10 +66,14 @@ window.previewImage = (file, previewId) => {
 
 
       window.addToBasket = (id) => {
-        
         madService.addToBasket(id);
         madService.appendAddFood();
         spaService.navigateTo("payment");
+      }
+
+      window.makePay = (id) => {
+        madService.appendFoodToProfile();
+        spaService.navigateTo("succes");
       }
 
       window.removeFromBasket = (id) => {
