@@ -65,7 +65,7 @@ ${beskrivelse}</p>
 <p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
 <p id="madContainerPris" <span class="bold">${pris}kr.</span></p>
 <div class="muligheder">
-<div><i class="material-icons" onclick="addToBasket('${id}')">
+<div><i class="material-icons" onclick="addToBasket(${id})">
 add_box
 </i> <p>Tilføj og søg videre</p></div>
 <div><i class="material-icons">add_shopping_cart</i>
@@ -105,10 +105,10 @@ userHasAdded(favRetId){
     return false;
   }
 }
-addToBasket(id, name, beskrivelse, img, gram, pris){
+addToBasket(id){
   spaService.navigateTo("buy");
   authService.authUserRef.set({
-    addedFood: firebase.firestore.FieldValue.arrayUnion(id, name, beskrivelse, img, gram, pris)
+    addedFood: firebase.firestore.FieldValue.arrayUnion(id)
   }, {
     merge: true
   });
@@ -119,11 +119,12 @@ removeFromBasket(id, name, beskrivelse, img, gram, pris){
     addedFood: firebase.firestore.FieldValue.arrayRemove(id, name, beskrivelse, img, gram, pris)
   });
 }
-async getAddedFood(id, name, beskrivelse, img, gram, pris){
+async getAddedFood(){
   let addedFood = [];
-  if (authService.addedFood){
-  for (let id of authService.addedFood){
-    await authService.userRef.doc(madId).get().then(function (doc){
+if (authService.authUser.addedFood){
+
+  for (let id of authService.authUser.addedFood){
+    await this.foodRef.doc(id).get().then(function (doc){
       let ret = doc.data();
       ret.id = doc.id;
       addedFood.push(ret);
@@ -133,8 +134,8 @@ async getAddedFood(id, name, beskrivelse, img, gram, pris){
 return addedFood;
 }
 
-async appendAddFood(id, name, beskrivelse, img, gram, pris){
-  let retter = await madService.getAddedFood(id, name, beskrivelse, img, gram, pris);
+async appendAddFood(){
+  let retter = await madService.getAddedFood();
   let kurvTemplate = "";
   for (let ret of retter){
     kurvTemplate +=`

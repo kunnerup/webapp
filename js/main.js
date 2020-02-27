@@ -63,9 +63,10 @@ window.previewImage = (file, previewId) => {
       }
 
 
-      window.addToBasket = (id, name, beskrivelse, img, gram, pris) => {
+      window.addToBasket = (id) => {
+        madService.addToBasket(id);
         spaService.navigateTo("payment");
-      madService.appendAddFood(id, name, beskrivelse, img, gram, pris);
+      madService.appendAddFood();
       }
 
       window.appendAuthUser = () => {
