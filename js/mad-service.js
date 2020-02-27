@@ -65,7 +65,7 @@ ${beskrivelse}</p>
 <p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
 <p id="madContainerPris" <span class="bold">${pris}kr.</span></p>
 <div class="muligheder">
-<div><i class="material-icons" onclick="addToBasket(${id})">
+<div><i class="material-icons" onclick="addToBasket('${id}')">
 add_box
 </i> <p>Tilføj og søg videre</p></div>
 <div><i class="material-icons">add_shopping_cart</i>
@@ -106,7 +106,6 @@ userHasAdded(favRetId){
   }
 }
 addToBasket(id){
-  spaService.navigateTo("buy");
   authService.authUserRef.set({
     addedFood: firebase.firestore.FieldValue.arrayUnion(id)
   }, {
@@ -114,9 +113,9 @@ addToBasket(id){
   });
 }
 
-removeFromBasket(id, name, beskrivelse, img, gram, pris){
+removeFromBasket(id){
   authService.authUserRef.update({
-    addedFood: firebase.firestore.FieldValue.arrayRemove(id, name, beskrivelse, img, gram, pris)
+    addedFood: firebase.firestore.FieldValue.arrayRemove(id)
   });
 }
 async getAddedFood(){
