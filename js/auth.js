@@ -45,7 +45,7 @@ class AuthService {
   initAuthUserRef() {
     let authUser = firebase.auth().currentUser;
     this.authUserRef = firebaseDB.collection("users").doc(authUser.uid);
-    // init user data and favourite movies
+  //USER DATA OG ADDEDFOOD
     this.authUserRef.onSnapshot({
       includeMetadataChanges: true
     }, userData => {
@@ -53,10 +53,10 @@ class AuthService {
         let user = {
           ...authUser,
           ...userData.data()
-        }; //concating two objects: authUser object and userData objec from the db
+        };
         this.authUser = user;
         this.appendAuthUser();
-        this.init();
+        madService.appendAddFood();
       }
 
     });
