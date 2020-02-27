@@ -65,7 +65,7 @@ class AuthService {
     firebase.auth().signOut();
   }
   appendAuthUser() {
-    document.querySelector('#profil').innerHTML = `
+    document.querySelector('#profilinfo').innerHTML = `
   <br><h2>${this.authUser.displayName}</h2>
    <p>${this.authUser.email}</p>
   `;

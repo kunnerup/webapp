@@ -69,7 +69,7 @@ window.previewImage = (file, previewId) => {
       madService.appendAddFood();
       }
 
-      window.appendAuthUser = () => {
+      window.appendAuthUser = (id) => {
         authService.appendAuthUser(id, name, beskrivelse, img, gram, pris);
       }
 
