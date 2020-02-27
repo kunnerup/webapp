@@ -29,10 +29,13 @@
       }
     }
   }
+
+  //NAGIVER TIL #SIDENS ID
   navigateTo(pageId) {
     window.location.href = `#${pageId}`;
   }
 
+//FUNKTIONEN DER SKIFTER SIDEN VED ÆNDRING
   pageChange() {
     let page = this.defaultPage;
     if (window.location.hash) {

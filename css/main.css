@@ -553,6 +553,11 @@ text-align: center;
   margin: 0;
 }
 
+#pay p {
+  text-align: center;
+  color: white;
+}
+
 #payment h3 {
   text-align: center;
   padding-top: 25px;
@@ -597,6 +602,18 @@ margin-bottom: 15px;
   height: 50%;
   padding-top: 60px;
   border-top-left-radius: 20px; border-top-right-radius: 20px;
+}
+
+#kvittering{
+  text-align: center;
+}
+
+#kvittering h5 {
+  font-size: 2em;
+}
+
+#succes p {
+  text-align: center;
 }
 
 .kvitten{

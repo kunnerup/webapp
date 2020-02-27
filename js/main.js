@@ -75,6 +75,10 @@ window.previewImage = (file, previewId) => {
         spaService.navigateTo("succes");
       }
 
+      window.search = function(searchValue) {
+  madService.search(searchValue);
+}
+
       window.removeFromBasket = (id) => {
         madService.removeFromBasket(id);
       madService.appendAddFood();

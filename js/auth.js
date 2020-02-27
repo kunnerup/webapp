@@ -61,9 +61,13 @@ class AuthService {
 
     });
   }
+
+  //LOGUD
   logout() {
     firebase.auth().signOut();
   }
+
+  //APPEND BRUGERENS DATA PÅ PROFILSIDEN
   appendAuthUser() {
     document.querySelector('#profilinfo').innerHTML = `
   <br><h2>${this.authUser.displayName}</h2>

@@ -7,6 +7,7 @@ class MadService {
     this.userRef = firebaseDB.collection("users");
     this.authUser;
     this.authUserRef;
+    this.retter;
     this.read();
   }
 
@@ -21,9 +22,7 @@ class MadService {
       });
       this.appendFood(retter);
     });
-
   }
-
 
   // SENDER MADRETTER TIL DOMMEN
   appendFood(retter) {
@@ -44,6 +43,20 @@ class MadService {
       `;
     }
     document.querySelector('#mad-container').innerHTML = htmlTemplate;
+  }
+
+  //SØGEFUNKITONEN
+  search(value) {
+    let searchQuery = value.toLowerCase();
+    let searchFood = [];
+    for (let ret of this.retter) {
+      let overskrift = ret.name.toLowerCase();
+      if (overskrift.includes(searchQuery)) {
+        searchFood.push(ret);
+      }
+    }
+    console.log(searchFood);
+    this.appendFood(searchFood);
   }
 
 
@@ -85,6 +98,8 @@ userHasAdded(favRetId){
     return false;
   }
 }
+
+//Tilføj til kurven funktionen
 addToBasket(id){
   authService.authUserRef.set({
     addedFood: firebase.firestore.FieldValue.arrayUnion(id)
@@ -93,11 +108,14 @@ addToBasket(id){
   });
 }
 
+ //Fjern fra kurven funktionen
 removeFromBasket(id){
   authService.authUserRef.update({
     addedFood: firebase.firestore.FieldValue.arrayRemove(id)
   });
 }
+
+//Henter og læser det tilføjede mad
 async getAddedFood(){
   let addedFood = [];
 if (authService.authUser.addedFood){
@@ -112,7 +130,7 @@ if (authService.authUser.addedFood){
 }
 return addedFood;
 }
-
+//Appender mad tilføjet til kurven.
 async appendAddFood(){
   let retter = await madService.getAddedFood();
   let kurvTemplate = "";
@@ -122,11 +140,16 @@ async appendAddFood(){
 <i class="material-icons" onclick="removeFromBasket('${ret.id}')">close</i>
 <h2>${ret.name}</h2>
 <p><span class="bold">${ret.pris}</span>kr.</p>
-</article>
-    `}
+</article>`;}
+
+if (retter.length === 0) {
+            kurvTemplate = `
+                <p>Tilføj venligst nogle retter</p>
+            `;
+    }
   document.querySelector('#pay').innerHTML = kurvTemplate;
 }
-
+//Sætter mad ind på profil og på kvitteringen
 async appendFoodToProfile(){
   let retter = await madService.getAddedFood();
   let kvittering = "";
@@ -139,6 +162,12 @@ async appendFoodToProfile(){
   mineordre += `<article class="orders">
   <p>1 * ${ret.name} (${time.getDate()}/${time.getMonth()+1}/${time.getFullYear()})</p>
       `}
+      if (kvittering.length === 0) {
+                  kvittering = `
+                      <h5>Noget gik galt.</h5>
+                    <p>Gå venligst tilbage og prøv igen.</p>
+                  `;
+          }
     document.querySelector('#kvittering').innerHTML = kvittering;
     document.querySelector('#mineordre').innerHTML = mineordre;
 }
@@ -171,23 +200,13 @@ async appendFoodToProfile(){
     };
     this.foodRef.doc(id).set(foodToUpdate);
   }
-  //tilføj til kurv
-  /*
-  addKurv(id, img, nameKurv, beskrivelse, gram, pris){
-  let addToKurv = {
-    img: img,
-    name: nameKurv,
-    beskrivelse: beskrivelse,
-    gram: gram,
-    pris: pris
-  };
-  this.foodRef.doc(id).add(addToKurv);
-  }
-  */
+
+//LOGUD
   logout() {
     authService.logout();
   }
-}
 
+}
+//Export class som madService
 const madService = new MadService();
 export default madService;
