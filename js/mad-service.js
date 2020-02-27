@@ -78,23 +78,6 @@ add_box
 
     document.querySelector('#infomadboks').innerHTML = skabelon;
   }
-/*
-//Tilføjer den valgte portion til kurven
-appendTilKurv(id, nameKurv, imageKurv, prisKurv) {
-  console.log(id, nameKurv, imageKurv, prisKurv);
-  let kurvTemplate = "";
-  kurvTemplate += `
-  <article class="kurven">
-  <a href="#buy"><div class="returnbuy"><i class="material-icons">close</i></div></a>
-
-  <h2 span="bold">${nameKurv}</h2>
-
-  </article>
-    `;
-
-  document.querySelector('#pay').innerHTML = kurvTemplate;
-}
-*/
 
 
 userHasAdded(favRetId){
@@ -138,10 +121,10 @@ async appendAddFood(){
   let kurvTemplate = "";
   for (let ret of retter){
     kurvTemplate +=`
-<article>
-<i class="material-icons" onclick="removeFromBasket(${ret.id}, name, beskrivelse, img, gram, pris)">close</i>
+<article class="kurven">
+<i class="material-icons" onclick="removeFromBasket('${ret.id}')">close</i>
 <h2>${ret.name}</h2>
-<p><span class="bold">${ret.pris}</span></p>
+<p><span class="bold">${ret.pris}</span>kr.</p>
 </article>
     `
   }

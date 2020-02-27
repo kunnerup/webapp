@@ -49,7 +49,7 @@
 
     <h2>Find din mad</h2>
 
-    <input type="search" placeholder="Søg efter mad" onkeyup="search(value)">
+    <input type="search" placeholder="Søg efter mad" onkeyup="search(this.value)">
     <section id="mad-container" class="buy-container">
 
       <img class="pot" src="images/pot.png" alt="grydelogo">
@@ -162,8 +162,9 @@
     <header>
       <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
     </header>
-    <h2>Din valgte portion</h2>
+    <h2>Klar til betaling</h2>
     <div id="pay"></div>
+    <h3>Tryk nedenfor for valg af betalingsform:</h3>
     <img class="betalinger" src="/images/mp.png" alt="mobilepay">
     <img class="betalinger" src="/images/kort.png" alt="betalingskort">
 

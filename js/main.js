@@ -27,7 +27,6 @@ window.createFood = () => {
   let gramInput = document.querySelector('#gram');
   let prisInput = document.querySelector('#pris');
 
-
   madService.create(imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
   spaService.navigateTo("buy");
   document.querySelector('#madoverskrift').value = "";
@@ -60,12 +59,18 @@ window.previewImage = (file, previewId) => {
       window.showInfo = (id, name, beskrivelse, img, gram, pris) => {
         spaService.navigateTo("info-om-ret");
       madService.appendFoodInfo(id, name, beskrivelse, img, gram, pris);
+
       }
 
 
       window.addToBasket = (id) => {
         madService.addToBasket(id);
+        madService.appendAddFood();
         spaService.navigateTo("payment");
+      }
+
+      window.removeFromBasket = (id) => {
+        madService.removeFromBasket(id);
       madService.appendAddFood();
       }
 
@@ -73,7 +78,9 @@ window.previewImage = (file, previewId) => {
         authService.appendAuthUser(id, name, beskrivelse, img, gram, pris);
       }
 
-//SØGEFUNKTION
+
+
+
 
 
 //UPDATE MADRETTER
@@ -106,28 +113,6 @@ window.update = (id, name, beskrivelse, img, gram, pris) => {
   madService.update(_selectedFoodId, imageInput.src, nameInput.value, beskrivelseInput.value, gramInput.value, prisInput.value);
   spaService.navigateTo("buy");
 }
-
-//Tilføj til kurven
-/*
-window.addKurv = (id, name, pris) => {
-  let nameKurv = document.querySelector('#madContainerOverskrift').textContent;
-  let prisKurv = document.querySelector('#madContainerPris');
-
-  _spaService.navigateTo("payment");
-_madService.appendTilKurv(_selectedFoodId, nameKurv, prisKurv.textContent);
-}*/
-
-
-
-
-
-// append favourite movies to the DOM
-
-
-
-
-
-
 
 
 //MAPBOX

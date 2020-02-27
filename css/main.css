@@ -525,20 +525,34 @@ text-align: center;
 }
 
 /*-----------KURVEN-------------*/
-#pay article {
+#pay {
   width: 90%;
   display: block;
   margin: auto;
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   background: linear-gradient(var(--lightgreen), var(--darkgreen));
   border-radius: 20px;
 }
 
-#pay article i {
-  width: 35px;
+.kurven {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.kurven h2 {
+  font-size: 1.5em;
+  padding: 0;
+  margin: 0;
+}
+
+#payment h3 {
+  text-align: center;
+  padding-top: 25px;
+  color: var(--darkgreen);
 }
 
 .betalinger{
