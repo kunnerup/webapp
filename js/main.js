@@ -64,6 +64,7 @@ window.previewImage = (file, previewId) => {
 
 
       window.addToBasket = (id) => {
+        
         madService.addToBasket(id);
         madService.appendAddFood();
         spaService.navigateTo("payment");

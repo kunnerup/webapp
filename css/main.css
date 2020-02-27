@@ -540,7 +540,7 @@ text-align: center;
 .kurven {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 98%;
 }
 
 .kurven h2 {
@@ -562,6 +562,28 @@ text-align: center;
   margin: auto;
   display: block;
 }
+
+#mersalg {
+background: linear-gradient(var(--lightgreen), var(--darkgreen));
+padding: 15px;
+display: block;
+margin: auto;
+text-align: center;
+border-radius: 20px;
+width: 50%;
+margin-top: 45px;
+margin-bottom: 15px;
+  box-shadow: 0 0 10px black;
+  color: white;
+  text-decoration: none;
+  font-size: 1.3em;
+}
+
+.payment a {
+  text-decoration: none;
+}
+
+
 
 @media (min-width: 600px) {}
 

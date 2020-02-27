@@ -66,11 +66,8 @@ ${beskrivelse}</p>
 <p id="madContainerPris" <span class="bold">${pris}kr.</span></p>
 <div class="muligheder">
 <div><i class="material-icons" onclick="addToBasket('${id}')">
-add_box
-</i> <p>Tilføj og søg videre</p></div>
-<div><i class="material-icons">add_shopping_cart</i>
-<p>Køb portion</p></div>
-
+add_shopping_cart
+</i> <p>Tilføj og gå til betaling</p></div>
 </div>
 
 </article>
