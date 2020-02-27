@@ -55,7 +55,7 @@ class AuthService {
           ...userData.data()
         }; //concating two objects: authUser object and userData objec from the db
         this.authUser = user;
-        this.appendAuthUser(id, name, beskrivelse, img, gram, pris);
+        this.appendAuthUser();
         this.init();
       }
 

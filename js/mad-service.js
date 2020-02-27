@@ -108,7 +108,7 @@ userHasAdded(favRetId){
 addToBasket(id, name, beskrivelse, img, gram, pris){
   spaService.navigateTo("buy");
   authService.authUserRef.set({
-    addedFood: firebase.firestore.FieldValue.arrayUnion(id)
+    addedFood: firebase.firestore.FieldValue.arrayUnion(id, name, beskrivelse, img, gram, pris)
   }, {
     merge: true
   });
@@ -116,7 +116,7 @@ addToBasket(id, name, beskrivelse, img, gram, pris){
 
 removeFromBasket(id, name, beskrivelse, img, gram, pris){
   authService.authUserRef.update({
-    addedFood: firebase.firestore.FieldValue.arrayRemove(id)
+    addedFood: firebase.firestore.FieldValue.arrayRemove(id, name, beskrivelse, img, gram, pris)
   });
 }
 async getAddedFood(id, name, beskrivelse, img, gram, pris){
@@ -134,19 +134,21 @@ return addedFood;
 }
 
 async appendAddFood(id, name, beskrivelse, img, gram, pris){
-  let retter = await madService.getAddedFood();
+  let retter = await madService.getAddedFood(id, name, beskrivelse, img, gram, pris);
   let kurvTemplate = "";
   for (let ret of retter){
     kurvTemplate +=`
 <article>
+<i class="material-icons" onclick="removeFromBasket(${ret.id}, name, beskrivelse, img, gram, pris)">close</i>
 <h2>${ret.name}</h2>
+<p><span class="bold">${ret.pris}</span></p>
 </article>
     `
   }
   if(retter.length === 0){
     kurvTemplate = `
     <article>
-<h3>tilføj venligst en ret</h3>
+<h3>Tilføj venligst en ret</h3>
 
     </article>`;
   }
