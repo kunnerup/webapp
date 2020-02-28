@@ -18,7 +18,7 @@ authService.init();
 window.logout = () => {
   authService.logout();
   spaService.navigateTo("login");
-  }
+}
 
 //CREATE MAD
 window.createFood = () => {
@@ -36,7 +36,7 @@ window.createFood = () => {
   document.querySelector('#gram').value = "";
   document.querySelector('#pris').value = "";
   document.querySelector('#img').value = "";
-    document.querySelector('#imagePreview').src = "";
+  document.querySelector('#imagePreview').src = "";
 }
 
 //BILLEDET AF RETTEN
@@ -52,41 +52,41 @@ window.previewImage = (file, previewId) => {
 }
 
 //DELETE MAD
-  window.deleteRet = (id) => {
-    madService.delete(id);
-  }
+window.deleteRet = (id) => {
+  madService.delete(id);
+}
 
 
-      //MERE INFO OM maden
-      window.showInfo = (id, name, beskrivelse, img, gram, pris) => {
-        spaService.navigateTo("info-om-ret");
-      madService.appendFoodInfo(id, name, beskrivelse, img, gram, pris);
+//MERE INFO OM maden
+window.showInfo = (id, name, beskrivelse, img, gram, pris) => {
+  spaService.navigateTo("info-om-ret");
+  madService.appendFoodInfo(id, name, beskrivelse, img, gram, pris);
 
-      }
+}
 
 
-      window.addToBasket = (id) => {
-        madService.addToBasket(id);
-        spaService.navigateTo("payment");
-      }
+window.addToBasket = (id) => {
+  madService.addToBasket(id);
+  spaService.navigateTo("payment");
+}
 
-      window.makePay = (id) => {
-        madService.appendFoodToProfile();
-        spaService.navigateTo("succes");
-      }
+window.makePay = (id) => {
+  madService.appendFoodToProfile();
+  spaService.navigateTo("succes");
+}
 
-      window.search = function(searchValue) {
+window.search = (searchValue) => {
   madService.search(searchValue);
 }
 
-      window.removeFromBasket = (id) => {
-        madService.removeFromBasket(id);
-      madService.appendAddFood();
-      }
+window.removeFromBasket = (id) => {
+  madService.removeFromBasket(id);
+  madService.appendAddFood();
+}
 
-      window.appendAuthUser = (id) => {
-        authService.appendAuthUser(id, name, beskrivelse, img, gram, pris);
-      }
+window.appendAuthUser = (id) => {
+  authService.appendAuthUser(id, name, beskrivelse, img, gram, pris);
+}
 
 
 

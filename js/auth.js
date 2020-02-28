@@ -45,7 +45,7 @@ class AuthService {
   initAuthUserRef() {
     let authUser = firebase.auth().currentUser;
     this.authUserRef = firebaseDB.collection("users").doc(authUser.uid);
-  //USER DATA OG ADDEDFOOD
+    //USER DATA OG ADDEDFOOD
     this.authUserRef.onSnapshot({
       includeMetadataChanges: true
     }, userData => {

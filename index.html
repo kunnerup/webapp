@@ -79,6 +79,7 @@
       <h3>Indsæt billede</h3>
       <form>
         <input type="file" id="img" accept="image/*" onchange="previewImage(this.files[0], 'imagePreview')">
+        <i id="elegantaddimg" class="material-icons">add_a_photo</i>
         <img id="imagePreview" class="image-preview">
         <div class="info">
           <input type="text" id="madoverskrift" placeholder="Navn på portionen" required>
@@ -108,13 +109,13 @@
         <div>
 
           <div>
-          <h3>Anmeldelser</h3>
-<p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
-        </div>
-        <div>
-<h3>Portioner til salg</h3>
-<p></p>Intet at vise</p>
-        </div>
+            <h3>Anmeldelser</h3>
+            <p><i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star</i> <i class="material-icons">star_border</i></p>
+          </div>
+          <div>
+            <h3>Portioner til salg</h3>
+            <p></p>Intet at vise</p>
+          </div>
         </div>
       </div>
     </div>
@@ -168,15 +169,17 @@
     <h2>Klar til betaling</h2>
     <div id="pay"></div>
 
-<a class="textdeco" href="#buy"><h4 id="mersalg">Tilføj mere mad</h4></a>
+    <a class="textdeco" href="#buy">
+      <h4 id="mersalg">Tilføj mere mad</h4>
+    </a>
 
     <h3>Tryk nedenfor for valg af betalingsform:</h3>
-<img class="betalinger" src="/images/mp.png" alt="mobilepay" onclick="makePay()">
+    <img class="betalinger" src="/images/mp.png" alt="mobilepay" onclick="makePay()">
     <img class="betalinger" src="/images/kort.png" alt="betalingskort">
 
   </section>
 
-<!--KØB FORETAGET MED SUCCES-->
+  <!--KØB FORETAGET MED SUCCES-->
   <section id="succes" class="sektion">
     <header>
       <img src="images/logo.png" alt="LOGO"> <a href="#profil"><img src="images/profil.png" alt="PROFIL-LOGO"></a>
@@ -193,7 +196,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-firestore.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-<script src="js/firebase-service.js"></script>
+  <script src="js/firebase-service.js"></script>
   <!-- JAVASCRIPT FILEN -->
   <script src="js/main.js" type="module"></script>
 

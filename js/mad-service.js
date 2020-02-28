@@ -45,7 +45,7 @@ class MadService {
     document.querySelector('#mad-container').innerHTML = htmlTemplate;
   }
 
-  //SØGEFUNKITONEN
+  //SØGEFUNKTONEN
   search(value) {
     let searchQuery = value.toLowerCase();
     let searchFood = [];
@@ -55,7 +55,6 @@ class MadService {
         searchFood.push(ret);
       }
     }
-    console.log(searchFood);
     this.appendFood(searchFood);
   }
 
@@ -90,87 +89,87 @@ add_shopping_cart
   }
 
 
-userHasAdded(favRetId){
-  if(authService.addedFood && authService.addedFood.includes(favRetId)){
-    return true;
+  userHasAdded(favRetId) {
+    if (authService.addedFood && authService.addedFood.includes(favRetId)) {
+      return true;
+    } else {
+      return false;
+    }
   }
-  else{
-    return false;
-  }
-}
 
-//Tilføj til kurven funktionen
-addToBasket(id){
-  authService.authUserRef.set({
-    addedFood: firebase.firestore.FieldValue.arrayUnion(id)
-  }, {
-    merge: true
-  });
-}
-
- //Fjern fra kurven funktionen
-removeFromBasket(id){
-  authService.authUserRef.update({
-    addedFood: firebase.firestore.FieldValue.arrayRemove(id)
-  });
-}
-
-//Henter og læser det tilføjede mad
-async getAddedFood(){
-  let addedFood = [];
-if (authService.authUser.addedFood){
-
-  for (let id of authService.authUser.addedFood){
-    await this.foodRef.doc(id).get().then(function (doc){
-      let ret = doc.data();
-      ret.id = doc.id;
-      addedFood.push(ret);
+  //Tilføj til kurven funktionen
+  addToBasket(id) {
+    authService.authUserRef.set({
+      addedFood: firebase.firestore.FieldValue.arrayUnion(id)
+    }, {
+      merge: true
     });
   }
-}
-return addedFood;
-}
-//Appender mad tilføjet til kurven.
-async appendAddFood(){
-  let retter = await madService.getAddedFood();
-  let kurvTemplate = "";
-  for (let ret of retter){
-    kurvTemplate +=`
+
+  //Fjern fra kurven funktionen
+  removeFromBasket(id) {
+    authService.authUserRef.update({
+      addedFood: firebase.firestore.FieldValue.arrayRemove(id)
+    });
+  }
+
+  //Henter og læser det tilføjede mad
+  async getAddedFood() {
+    let addedFood = [];
+    if (authService.authUser.addedFood) {
+      for (let id of authService.authUser.addedFood) {
+        await this.foodRef.doc(id).get().then(function(doc) {
+          let ret = doc.data();
+          ret.id = doc.id;
+          addedFood.push(ret);
+        });
+      }
+    }
+    return addedFood;
+  }
+  //Appender mad tilføjet til kurven.
+  async appendAddFood() {
+    let retter = await madService.getAddedFood();
+    let kurvTemplate = "";
+    for (let ret of retter) {
+      kurvTemplate += `
 <article class="kurven">
 <i class="material-icons" onclick="removeFromBasket('${ret.id}')">close</i>
 <h2>${ret.name}</h2>
 <p><span class="bold">${ret.pris}</span>kr.</p>
-</article>`;}
+</article>`;
+    }
 
-if (retter.length === 0) {
-            kurvTemplate = `
+    if (retter.length === 0) {
+      kurvTemplate = `
                 <p>Tilføj venligst nogle retter</p>
             `;
     }
-  document.querySelector('#pay').innerHTML = kurvTemplate;
-}
-//Sætter mad ind på profil og på kvitteringen
-async appendFoodToProfile(){
-  let retter = await madService.getAddedFood();
-  let kvittering = "";
-  let mineordre = "";
-  let time = new Date();
-  for (let ret of retter){
-  kvittering += `<article class="kvitten">
+    document.querySelector('#pay').innerHTML = kurvTemplate;
+  }
+  //Sætter mad ind på profil og på kvitteringen
+  async appendFoodToProfile() {
+    let retter = await madService.getAddedFood();
+    let kvittering = "";
+    let mineordre = "";
+    let time = new Date();
+    for (let ret of retter) {
+      kvittering += `<article class="kvitten">
   <h2>1 * ${ret.name}</h2>
       `
-  mineordre += `<article class="orders">
+      mineordre += `<article class="orders">
   <p>1 * ${ret.name} (${time.getDate()}/${time.getMonth()+1}/${time.getFullYear()})</p>
-      `}
-      if (kvittering.length === 0) {
-                  kvittering = `
+      `
+    }
+    if (kvittering.length === 0) {
+      kvittering = `
                       <h5>Noget gik galt.</h5>
                     <p>Gå venligst tilbage og prøv igen.</p>
                   `;
-          }
+    }
     document.querySelector('#kvittering').innerHTML = kvittering;
     document.querySelector('#mineordre').innerHTML = mineordre;
-}
+  }
 
   // TILFØJ NY PORTION - Rækkefølgen!
   create(img, name, beskrivelse, gram, pris) {
@@ -201,7 +200,7 @@ async appendFoodToProfile(){
     this.foodRef.doc(id).set(foodToUpdate);
   }
 
-//LOGUD
+  //LOGUD
   logout() {
     authService.logout();
   }
