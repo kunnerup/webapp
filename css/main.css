@@ -25,6 +25,10 @@ h2 {
   font-weight: bolder;
 }
 
+.bolder {
+  font-weight: bolder;
+}
+
 .lightgreen {
   color: var(--lightgreen);
 }
@@ -626,9 +630,6 @@ header img {
   padding-top: 60px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-}
-
-#kvittering {
   text-align: center;
 }
 
@@ -638,6 +639,24 @@ header img {
 
 #succes p {
   text-align: center;
+}
+
+#tillykke {
+  position: absolute;
+  display: block;
+  margin-left: 10%;
+  margin-right: auto;
+bottom: 100px;
+color:#ebebeb;
+width: 80%;
+}
+
+#miljtree {
+  position: absolute;
+  bottom: 40px;
+  height: 40%;
+  z-index: 10;
+  opacity: 0.3;
 }
 
 .kvitten {
