@@ -125,7 +125,7 @@ window.update = (id, name, beskrivelse, img, gram, pris) => {
 }
 
 
-//MAPBOX
+//MAPBOX - KODEN ER AUTOMATISK OPRETTET AF MAPBOX - KUN TOKEN OG STARTPOSITION ER ÆNDRET
 mapboxgl.accessToken = 'pk.eyJ1Ijoiam9uYTU1MDgiLCJhIjoiY2syMDZ5bXBtMDBuZTNlcXpvbnozYzJuZSJ9.Wo5gS17JDQ8hYPQ82hQlgA'; //Vores acceptoken
 let map = new mapboxgl.Map({
   container: 'map', // MAP-ID (HTML)
@@ -134,7 +134,7 @@ let map = new mapboxgl.Map({
   zoom: 13 // START ZOOM
 });
 
-//Find ud af hvor brugeren er og brug dette til lokation ved tryk
+//Finder ud af hvor brugeren er og brug dette til lokation ved tryk
 map.addControl(
   new mapboxgl.GeolocateControl({
     positionOptions: {

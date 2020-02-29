@@ -1,4 +1,5 @@
 import authService from "./auth.js";
+import Loader from "./spinner.js";
 
 
 class MadService {
@@ -9,6 +10,7 @@ class MadService {
     this.authUserRef;
     this.retter;
     this.read();
+    this.loader = new Loader();
   }
 
   read() {
@@ -21,6 +23,7 @@ class MadService {
         retter.push(ret);
       });
       this.appendFood(retter);
+      this.loader.show(false);
     });
   }
 
@@ -147,6 +150,8 @@ add_shopping_cart
     }
     document.querySelector('#pay').innerHTML = kurvTemplate;
   }
+
+//ANDERS
   //Sætter mad ind på profil og på kvitteringen
   async appendFoodToProfile() {
     let retter = await madService.getAddedFood();
