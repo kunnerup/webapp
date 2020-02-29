@@ -1,3 +1,5 @@
+//   --->   Alt uden navn er fællesskabt i gruppen  <----
+
 "use strict";
 import spaService from "./spa.js";
 import madService from "./mad-service.js";
@@ -70,6 +72,7 @@ window.addToBasket = (id) => {
   spaService.navigateTo("payment");
 }
 
+//ANDERS
 window.makePay = (id) => {
   madService.appendFoodToProfile();
   spaService.navigateTo("succes");
@@ -93,7 +96,7 @@ window.appendAuthUser = (id) => {
 
 
 
-//UPDATE MADRETTER
+//UPDATE MADRETTER (ANDERS)
 //FØRST VALG AF MADRET og tilføjt til inputfelter
 window.selectFood = (id, name, beskrivelse, img, gram, pris) => {
   // Vælger de "Nye" input felter til opdatereingen

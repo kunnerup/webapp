@@ -194,6 +194,7 @@ add_shopping_cart
 
 
   //OPDATER MADRETTER
+  //ANDERS
   update(id, img, name, beskrivelse, gram, pris) {
     let foodToUpdate = {
       img: img,
