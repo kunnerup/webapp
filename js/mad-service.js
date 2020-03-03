@@ -14,7 +14,7 @@ class MadService {
   }
 
   read() {
-    // SE DATABASEN OM DER ER ÆNDRINGER
+    // SE DATABASEN OM DER ER ÆNDRINGER(Jonas)
     this.foodRef.onSnapshot(snapshotData => {
       let retter = [];
       snapshotData.forEach(doc => {

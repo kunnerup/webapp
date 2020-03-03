@@ -6,7 +6,7 @@
      this.pageChange();
    }
 
-   //SKJUL ALLE SIDER
+   //SKJUL ALLE SIDER(JONAS)
    hideAllPages() {
      for (let page of this.pages) {
        page.style.display = "none";

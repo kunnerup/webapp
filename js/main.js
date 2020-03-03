@@ -22,7 +22,7 @@ window.logout = () => {
   spaService.navigateTo("login");
 }
 
-//CREATE MAD
+//CREATE MAD (JONAS)
 window.createFood = () => {
   // Finder inputfelterne
   let imageInput = document.querySelector('#imagePreview');
